@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Acharya Foods - Authentic Nepali family-made pickles, spice powders, and flour items. Traditional recipes passed down through generations.">
+    <meta name="keywords" content="Nepali pickles, Nepali spices, traditional food, homemade, family business, acharya foods, made in Nepal, Nepali products">
+    <title>Acharya Foods - Authentic Nepali Pickles & Spices</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-mortar-pestle"></i>
+                </div>
+                <div class="logo-text">
+                    <div class="logo-main">Acharya Foods</div>
+                    <div class="logo-sub">Traditional Family Recipes Since 2006</div>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#partnership">Dealership</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Authentic Nepali Pickles & Spices</h1>
+                <div class="hero-tagline">Family recipes passed down through generations</div>
+                <p>Acharya Foods has been preserving the authentic taste of Nepali cuisine since 1975. Our traditional pickles, spice powders, and flour items are crafted using time-honored family recipes, natural ingredients, and the meticulous care that only comes from three generations of expertise.</p>
+                <div class="cta-buttons">
+                    <a href="#products" class="btn">Our Products</a>
+                    <a href="#partnership" class="btn btn-accent">Become a Dealer</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-frame">
+                    <img src="./images/picklebanner.jpg" alt="Traditional Pickles">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section-alt" id="about">
+        <div class="container about-container">
+            <div class="about-image">
+                <img src="./images/products1.png" alt="our products">
+            </div>
+            <div class="about-content">
+                <h2>Our Family Story</h2>
+                <div class="about-tagline">Preserving Nepali culinary heritage since 1975</div>
+                <p>It all began in a small kitchen in Kathmandu, where Mrs. Laxmi Acharya started making pickles using her grandmother's recipes. What started as a humble family tradition soon captured the hearts of neighbors and friends who couldn't get enough of her authentic Nepali flavors.</p>
+                <p>Today, Acharya Foods remains a family-run business, with three generations working together to preserve the traditional methods. We still hand-select every ingredient, follow the same time-tested recipes, and pour the same care into every jar that leaves our kitchen.</p>
+                
+                <div class="about-features">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>100% Natural</h3>
+                        <p>No artificial colors, flavors, or preservatives. Just pure, natural ingredients.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Handcrafted</h3>
+                        <p>Each product is carefully prepared by hand, following traditional methods.</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h3>Authentic Nepali</h3>
+                        <p>True flavors that capture the essence of Nepali culinary tradition.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section-bg nepali-pattern-bg" id="products">
+        <div class="container">
+            <h2>Our Products</h2>
+            <div class="products-intro">
+                <p>All our products are made using traditional Nepali recipes and the finest locally-sourced ingredients. Each item reflects our commitment to quality and authenticity that has been our family's hallmark for nearly five decades.</p>
+            </div>
+            
+            <div class="product-categories" id="categoryFilters">
+                <button class="category-btn active" data-category="all">All Products</button>
+                <button class="category-btn" data-category="pickles">Pickles (अचार)</button>
+                <button class="category-btn" data-category="spices">Spice Powders</button>
+                <button class="category-btn" data-category="flour">Flour Items</button>
+                <button class="category-btn" data-category="snacks">Snacks</button>
+                <button class="category-btn" data-category="seasoning">Seasoning</button>
+            </div>
+            
+            <div class="products-grid" id="productsContainer">
+                <!-- Products will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Section - Improved Text Visibility -->
+    <section class="partnership-section" id="partnership">
+        <div class="container">
+            <h2>Become Our Dealer</h2>
+            <div class="partnership-content">
+                <p>Join our growing family of dealers across Nepal and help us share authentic Nepali flavors with more communities. We offer comprehensive support, attractive margins, and exclusive products for our dedicated partners.</p>
+            </div>
+            
+            <div class="partnership-benefits">
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Partnership Support</h3>
+                    <p>We work closely with our dealers to ensure mutual growth and success. Regular training and support provided.</p>
+                </div>
+                
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Nationwide Delivery</h3>
+                    <p>Reliable delivery across Nepal, from the Terai to the Himalayan regions. Consistent supply chain.</p>
+                </div>
+                
+                <div class="benefit">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Growth Opportunities</h3>
+                    <p>Exclusive products and marketing support to help your business thrive. Attractive dealer margins.</p>
+                </div>
+            </div>
+            
+            <button class="btn btn-accent" id="partnershipCtaBtn">Apply for Dealership</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-alt" id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 style="text-align: left; margin-bottom: 2rem;">Get In Touch</h3>
+                    <p style="margin-bottom: 2rem; line-height: 1.7;">We'd love to hear from you. Whether you're interested in our products, want to become a dealer, or have questions about our traditional methods, our team is here to help.</p>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Our Location</h4>
+                            <p>Acharya Foods<br>Ratnanagar-3, Chitwan<br>Nepal</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Phone Numbers</h4>
+                            <p>+977 9845222314</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Email Address</h4>
+                            <p>acharyafoodsudhog@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form handcrafted-border">
+                    <h3 style="text-align: left; margin-bottom: 2rem;">Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" placeholder="Message Subject">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" placeholder="Your Message" required rows="5"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <div class="footer-logo-main">Acharya Foods</div>
+                        <div class="footer-logo-sub">Traditional Family Recipes</div>
+                    </div>
+                    <p>For nearly 19 years, our family has been dedicated to preserving the authentic taste of Nepali cuisine. Through traditional methods and time-honored recipes, we bring the flavors of home to your table.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-container">
+                    <h4 class="footer-heading">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#partnership">Dealership</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-products">
+                    <h4 class="footer-heading">Our Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="#products" data-category="pickles">Pickles (अचार)</a></li>
+                        <li><a href="#products" data-category="spices">Spice Powders</a></li>
+                        <li><a href="#products" data-category="flour">Flour Items</a></li>
+                        <li><a href="#products">Special Gift Packs</a></li>
+                        <li><a href="#products">Bulk Orders</a></li>
+                    </ul>
+                </div>
+                
+                <div class="dealer-cta">
+                    <h4 class="footer-heading">Dealer Inquiries</h4>
+                    <p style="color: #ccc; margin-bottom: 1.5rem; line-height: 1.6;">Interested in selling Acharya Foods products? Join our network of dealers across Nepal.</p>
+                    <button class="btn btn-accent" id="footerDealerBtn">Apply Now</button>
+                </div>
+            </div>
+            
+            <div class="made-in-nepal">
+                <div class="made-in-nepal-text">Made in Nepal with Pride</div>
+                <div class="made-in-nepal-sub">Preserving Nepali culinary heritage since 2006</div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 Acharya Foods. All rights reserved. | A Family Tradition Since 2006</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Dealer Form Modal -->
+    <div class="modal-overlay" id="dealerModal">
+        <div class="dealer-modal">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <h2 class="modal-title">Become an Acharya Foods Dealer</h2>
+            <p class="modal-subtitle">Fill out the form below to apply for dealership. Our team will contact you within 48 hours.</p>
+            
+            <form id="dealerForm">
+                <div class="form-group">
+                    <label for="dealerName">Full Name *</label>
+                    <input type="text" id="dealerName" class="form-control" placeholder="Your Full Name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dealerEmail">Email Address *</label>
+                    <input type="email" id="dealerEmail" class="form-control" placeholder="Your Email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dealerPhone">Phone Number *</label>
+                    <input type="tel" id="dealerPhone" class="form-control" placeholder="Your Contact Number" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessName">Business Name</label>
+                    <input type="text" id="businessName" class="form-control" placeholder="Your Business Name (if applicable)">
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessType">Type of Business *</label>
+                    <select id="businessType" class="form-control" required>
+                        <option value="">Select Business Type</option>
+                        <option value="retail">Retail Store</option>
+                        <option value="wholesale">Wholesale Distributor</option>
+                        <option value="supermarket">Supermarket/Hypermarket</option>
+                        <option value="kirana">Kirana Store</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dealerLocation">Business Location *</label>
+                    <input type="text" id="dealerLocation" class="form-control" placeholder="City, District" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dealerExperience">Previous Experience</label>
+                    <textarea id="dealerExperience" class="form-control" placeholder="Tell us about your experience in food distribution (if any)" rows="3"></textarea>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%; padding: 1rem; font-size: 1.1rem; margin-top: 1rem;">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Model - Data
+        const products = [
+            {
+  id: 1,
+  name: "Mango Pickle (आँपको अचार)",
+  category: "pickles",
+  price: "रु 250",
+  image: "./images/mangoachar.JPG",
+  description: "Authentic Nepali mango pickle made from fresh raw mangoes, mustard oil, timur, and traditional spices. Homemade style achar perfect with dal-bhat, roti, and snacks."
+},
+{
+  id: 2,
+  name: "Chilli Pickle (खुर्सानीको अचार)",
+  category: "pickles",
+  price: "रु 220",
+  image: "./images/chilliachar.JPG",
+  description: "Spicy Nepali chilli pickle prepared using fresh green chillies, mustard seeds, garlic, and local spices. A fiery traditional achar that enhances every meal."
+},
+{
+  id: 3,
+  name: "Mixed Vegetable Pickle (मिक्स तरकारी अचार)",
+  category: "pickles",
+  price: "रु 240",
+  image: "./images/mixachar.JPG",
+  description: "Traditional Nepali mixed vegetable pickle made with seasonal vegetables, mustard oil, and aromatic spices. A healthy, homemade achar for daily meals."
+},
+{
+  id: 4,
+  name: "Buckwheat Flour (फापरको पिठो)",
+  category: "flour",
+  price: "रु 180",
+  image: "./images/fapar.jpg",
+  description: "Pure Nepali buckwheat flour made from naturally grown fapar. Ideal for making dhido, roti, and healthy traditional meals, rich in fiber and nutrients."
+},
+{
+  id: 5,
+  name: "Roasted Corn (भुटेको मकै)",
+  category: "snacks",
+  price: "रु 120",
+  image: "./images/corn.jpg",
+  description: "Crunchy Nepali roasted corn snack made from quality maize and lightly seasoned. A healthy traditional snack enjoyed across Nepal."
+},
+{
+  id: 6,
+  name: "Roasted Batmas (भुटेको भटमास)",
+  category: "snacks",
+  price: "रु 150",
+  image: "./images/batmas.jpg",
+  description: "Traditional Nepali roasted batmas made from high-protein soybeans, seasoned with spices. A popular healthy snack packed with flavor and nutrition."
+},
+            {
+                id: 7,
+                name: "Kodo Ko Pitho (कोदोको पिठो)",
+                category: "flour",
+                price: "रु 140",
+                image: "./images/kodo.jpg",
+                description: "Nutritious finger millet flour, rich in calcium and fiber, ideal for traditional porridge and roti."
+            },
+            {
+  id: 8,
+  name: "Ajina Moto (अजिनोमोटो / MSG)",
+  category: "seasoning",
+  price: "रु 90",
+  image: "./images/ajina.jpg",
+  description: "Ajina Moto (MSG) is a popular flavor enhancer used in Nepali and Asian cooking to boost umami taste. Commonly added to chowmein, momo, fried rice, and snacks for richer flavor."
+},
+{
+  id: 9,
+  name: "Chatpat Masala (चटपट मसला)",
+  category: "spices",
+  price: "रु 100",
+  image: "./images/chatpate.jpg",
+  description: "Chatpat Masala is a tangy and spicy Nepali seasoning blend made from aromatic spices. Commonly used to enhance fruits, snacks, chatpate, salads, and street food with a bold chatpata flavor."
+}
+        
+        ];
+
+        // View - UI Rendering
+        class ProductView {
+            constructor() {
+                this.productsContainer = document.getElementById('productsContainer');
+                this.categoryFilters = document.getElementById('categoryFilters');
+                this.dealerModal = document.getElementById('dealerModal');
+                this.backToTopBtn = document.getElementById('backToTop');
+            }
+            
+            renderProducts(productsToRender) {
+                this.productsContainer.innerHTML = '';
+                
+                if (productsToRender.length === 0) {
+                    this.productsContainer.innerHTML = '<p class="no-products" style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-light); font-size: 1.1rem;">No products found in this category</p>';
+                    return;
+                }
+                
+                productsToRender.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.setAttribute('data-category', product.category);
+                    
+                    productCard.innerHTML = `
+                        <div class="product-image">
+                            <div class="nepali-badge">नेपाली</div>
+                            <img src="${product.image}" alt="${product.name}">
+                        </div>
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <div class="product-price">${product.price}</div>
+                            <p class="product-description">${product.description}</p>
+                            <p class="product-availability">Available through authorized dealers</p>
+                        </div>
+                    `;
+                    
+                    this.productsContainer.appendChild(productCard);
+                });
+            }
+            
+            updateCategoryButtons(activeCategory) {
+                const buttons = this.categoryFilters.querySelectorAll('.category-btn');
+                buttons.forEach(button => {
+                    if (button.getAttribute('data-category') === activeCategory) {
+                        button.classList.add('active');
+                    } else {
+                        button.classList.remove('active');
+                    }
+                });
+            }
+            
+            showDealerModal() {
+                this.dealerModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            hideDealerModal() {
+                this.dealerModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            
+            toggleBackToTop(show) {
+                if (show) {
+                    this.backToTopBtn.classList.add('show');
+                } else {
+                    this.backToTopBtn.classList.remove('show');
+                }
+            }
+        }
+
+        // Controller - Business Logic
+        class ProductController {
+            constructor(model, view) {
+                this.model = model;
+                this.view = view;
+                this.activeCategory = 'all';
+                
+                this.initialize();
+            }
+            
+            initialize() {
+                // Render all products initially
+                this.view.renderProducts(this.model);
+                
+                // Set up event listeners for category filters
+                this.view.categoryFilters.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('category-btn')) {
+                        const category = e.target.getAttribute('data-category');
+                        this.filterProducts(category);
+                    }
+                });
+                
+                // Set up dealer modal event listeners
+                document.getElementById('modalClose').addEventListener('click', () => {
+                    this.view.hideDealerModal();
+                });
+                
+                // Close modal when clicking outside
+                this.view.dealerModal.addEventListener('click', (e) => {
+                    if (e.target === this.view.dealerModal) {
+                        this.view.hideDealerModal();
+                    }
+                });
+                
+                // Dealer form submission
+                document.getElementById('dealerForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.submitDealerForm();
+                });
+                
+                // Multiple buttons to open dealer modal
+                const dealerButtons = [
+                    'partnershipCtaBtn',
+                    'footerDealerBtn'
+                ];
+                
+                dealerButtons.forEach(buttonId => {
+                    const button = document.getElementById(buttonId);
+                    if (button) {
+                        button.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            this.view.showDealerModal();
+                        });
+                    }
+                });
+                
+                // Also add event to "Become a Dealer" button in hero section
+                document.querySelector('.btn-accent').addEventListener('click', (e) => {
+                    if (e.target.getAttribute('href') === '#partnership') {
+                        e.preventDefault();
+                        this.view.showDealerModal();
+                    }
+                });
+                
+                // Back to top button functionality
+                this.view.backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+                
+                // Show/hide back to top button on scroll
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        this.view.toggleBackToTop(true);
+                    } else {
+                        this.view.toggleBackToTop(false);
+                    }
+                });
+            }
+            
+            filterProducts(category) {
+                this.activeCategory = category;
+                
+                let filteredProducts;
+                if (category === 'all') {
+                    filteredProducts = this.model;
+                } else {
+                    filteredProducts = this.model.filter(product => product.category === category);
+                }
+                
+                this.view.renderProducts(filteredProducts);
+                this.view.updateCategoryButtons(category);
+            }
+            
+            submitDealerForm() {
+                // Get form values
+                const dealerName = document.getElementById('dealerName').value;
+                const dealerEmail = document.getElementById('dealerEmail').value;
+                const dealerPhone = document.getElementById('dealerPhone').value;
+                const businessName = document.getElementById('businessName').value;
+                const businessType = document.getElementById('businessType').value;
+                const dealerLocation = document.getElementById('dealerLocation').value;
+                
+                // In a real application, you would send this data to a server
+                // For now, we'll just show a confirmation message
+                alert(`Thank you, ${dealerName}! Your dealership application has been submitted. We'll contact you at ${dealerEmail} within 48 hours.`);
+                
+                // Reset form
+                document.getElementById('dealerForm').reset();
+                
+                // Close modal
+                this.view.hideDealerModal();
+            }
+        }
+
+        // Initialize the application when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize MVC for products
+            const productView = new ProductView();
+            const productController = new ProductController(products, productView);
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('mainNav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+                mobileMenuBtn.innerHTML = mainNav.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if(this.getAttribute('href') === '#') return;
+                    
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if(targetElement) {
+                        // Close mobile menu if open
+                        if(mainNav.classList.contains('active')) {
+                            mainNav.classList.remove('active');
+                            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Update active nav link on scroll
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if(scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // Contact form submission
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                // In a real application, you would send this data to a server
+                // For now, we'll just show a confirmation message
+                alert(`Thank you, ${name}! Your message has been sent. We'll get back to you at ${email} soon.`);
+                
+                // Reset form
+                contactForm.reset();
+            });
+            
+            // Product category links in footer
+            document.querySelectorAll('.footer-links a[data-category]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const category = this.getAttribute('data-category');
+                    productController.filterProducts(category);
+                    
+                    // Scroll to products section
+                    const productsSection = document.getElementById('products');
+                    window.scrollTo({
+                        top: productsSection.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && productView.dealerModal.classList.contains('active')) {
+                    productView.hideDealerModal();
+                }
+            });
+            
+            // Highlight active section on page load
+            window.dispatchEvent(new Event('scroll'));
+            
+            // Add subtle animation to product cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe product cards
+            document.querySelectorAll('.product-card').forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Initialize back to top button visibility
+            if (window.scrollY > 300) {
+                productView.toggleBackToTop(true);
+            }
+        });
+    </script>
+</body>
+</html>
