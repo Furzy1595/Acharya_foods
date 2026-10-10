@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { content } from '../content';
+import { Heading } from '../components/Heading';
 import { InquiryForm } from '../components/InquiryForm';
 import { ContactDetails } from './Home';
 
 export function Contact() {
-  const { contact } = content;
+  const { contact, nepali } = content;
   const [params] = useSearchParams();
   // Read after the page has loaded: the saved HTML file is the same for every visitor.
   const [productSlug, setProductSlug] = useState<string>();
@@ -15,7 +16,9 @@ export function Contact() {
     <section className="section page-top">
       <div className="container split">
         <div>
-          <h1>{contact.title}</h1>
+          <Heading as="h1" np={nepali?.contact}>
+            {contact.title}
+          </Heading>
           <p className="lead">{contact.intro}</p>
           <ContactDetails />
           <p className="aside-note">

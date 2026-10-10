@@ -11,18 +11,19 @@ export function ProductCard({ product }: { product: Product }) {
           <Picture
             file={product.image}
             alt={`${product.name} — Acharya Foods`}
-            sizes="(min-width: 900px) 360px, (min-width: 560px) 50vw, 50vw"
+            sizes="(min-width: 900px) 360px, 50vw"
           />
         </div>
         <div className="product-card__body">
-          <h3 className="product-card__name">{product.name}</h3>
           {product.nameNp && (
             <p className="product-card__np" lang="ne">
               {product.nameNp}
             </p>
           )}
-          {price && <p className="product-card__price">{price}</p>}
-          <p className="product-card__desc">{product.description}</p>
+          <div className="product-card__row">
+            <h3 className="product-card__name">{product.name}</h3>
+            {price && <p className="product-card__price">{price}</p>}
+          </div>
         </div>
       </Link>
     </li>

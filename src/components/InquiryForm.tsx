@@ -39,19 +39,19 @@ const WORDS: Record<InquiryType, { send: string; sentTitle: string; sentText: st
   customer: {
     send: 'Send message',
     sentTitle: 'Message sent',
-    sentText: "Thank you. We'll get back to you soon.",
+    sentText: "Thank you. We’ll get back to you soon.",
     mailSubject: 'Message from the website',
   },
   dealer: {
     send: 'Send application',
     sentTitle: 'Application sent',
-    sentText: "Thank you. We'll reach out within 48 hours.",
+    sentText: "Thank you. We’ll reach out within 48 hours.",
     mailSubject: 'Dealership application from the website',
   },
   support: {
     send: 'Send request',
     sentTitle: 'Request sent',
-    sentText: "Thank you. We'll get back to you soon.",
+    sentText: "Thank you. We’ll get back to you soon.",
     mailSubject: 'Support request from the website',
   },
 };

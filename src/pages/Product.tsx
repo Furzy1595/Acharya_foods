@@ -26,24 +26,24 @@ export function ProductPage() {
               <Picture file={product.image} alt={`${product.name} — Acharya Foods`} sizes="(min-width: 900px) 520px, 100vw" eager />
             </div>
             <div className="product__text">
-              <h1>{product.name}</h1>
               {product.nameNp && (
                 <p className="product__np" lang="ne">
                   {product.nameNp}
                 </p>
               )}
+              <h1>{product.name}</h1>
               {(price || product.pack) && (
                 <p className="product__price">
                   {price}
                   {product.pack && <span className="product__pack">{product.pack}</span>}
                 </p>
               )}
-              <p className="product__desc">{product.description}</p>
+              <p className="lead">{product.description}</p>
               <div className="button-row">
                 <Link to={`/contact/?product=${product.slug}`} className="btn btn-primary">
                   Ask about this product
                 </Link>
-                <Link to="/dealership/" className="btn btn-outline">
+                <Link to="/dealership/" className="btn btn-quiet">
                   Stock it in your shop
                 </Link>
               </div>
@@ -52,7 +52,7 @@ export function ProductPage() {
         </div>
       </section>
 
-      <section className="section section--tint">
+      <section className="section section--rule">
         <div className="container">
           <div className="section-head">
             <h2>{related.length > 0 ? `More ${categoryName(product.category).toLowerCase()}` : 'More from our kitchen'}</h2>

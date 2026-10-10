@@ -1,14 +1,17 @@
 import { Link } from 'react-router-dom';
 import { content } from '../content';
+import { Heading } from '../components/Heading';
 import { InquiryForm } from '../components/InquiryForm';
 
 export function Support() {
-  const { support } = content;
+  const { support, nepali } = content;
   return (
     <section className="section page-top">
       <div className="container split">
         <div>
-          <h1>{support.title}</h1>
+          <Heading as="h1" np={nepali?.support}>
+            {support.title}
+          </Heading>
           <p className="lead">{support.intro}</p>
           {support.faqs.length > 0 && (
             <div className="faqs">

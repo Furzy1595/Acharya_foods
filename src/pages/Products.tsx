@@ -1,5 +1,6 @@
 import { NavLink, useParams } from 'react-router-dom';
-import { categories, categoryName, products } from '../content';
+import { categories, categoryName, content, products } from '../content';
+import { Heading } from '../components/Heading';
 import { ProductGrid } from '../components/ProductCard';
 import { NotFound } from './NotFound';
 
@@ -12,7 +13,9 @@ export function Products() {
     <section className="section page-top">
       <div className="container">
         <div className="section-head">
-          <h1>{category ? categoryName(category) : 'Our products'}</h1>
+          <Heading as="h1" np={category ? undefined : content.nepali?.products}>
+            {category ? categoryName(category) : 'Our products'}
+          </Heading>
           <nav className="tabs" aria-label="Kinds of product">
             <NavLink to="/products/" end className="tab">
               All

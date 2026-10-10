@@ -1,25 +1,19 @@
 import { content } from '../content';
-import { CheckIcon } from '../components/Icons';
+import { Heading } from '../components/Heading';
 import { InquiryForm } from '../components/InquiryForm';
+import { Benefits } from './Home';
 
 export function Dealership() {
-  const { dealership } = content;
+  const { dealership, nepali } = content;
   return (
     <section className="section page-top">
       <div className="container split">
         <div>
-          <h1>{dealership.title}</h1>
+          <Heading as="h1" np={nepali?.dealership}>
+            {dealership.title}
+          </Heading>
           <p className="lead">{dealership.intro}</p>
-          <ul className="benefits benefits--light">
-            {dealership.benefits.map((b) => (
-              <li key={b.title}>
-                <CheckIcon />
-                <span>
-                  <strong>{b.title}</strong> — {b.text}
-                </span>
-              </li>
-            ))}
-          </ul>
+          <Benefits />
         </div>
         <div className="form-card">
           <h2>{dealership.formTitle}</h2>

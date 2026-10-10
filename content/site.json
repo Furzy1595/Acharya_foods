@@ -11,7 +11,8 @@
     "description": "Acharya Foods brings you handcrafted Nepali pickles, spice blends, and stone-ground flours from our family kitchen in Chitwan. Made the old way since 2006.",
     "keywords": "Nepali pickles, achar, Nepali spices, buckwheat flour, millet flour, Acharya Foods, Chitwan food, traditional Nepali food",
     "footerBlurb": "Family-made pickles, spices, and flours from Chitwan. Doing things the old-fashioned way since 2006.",
-    "footerNote": "A family tradition since 2006"
+    "footerNote": "A family tradition since 2006",
+    "placeNp": "चितवन, नेपाल"
   },
   "api": {
     "baseUrl": ""
@@ -30,8 +31,16 @@
     "instagram": "",
     "tiktok": ""
   },
+  "nepali": {
+    "products": "हाम्रा उत्पादन",
+    "story": "हाम्रो कथा",
+    "dealership": "डिलर बन्नुहोस्",
+    "support": "सहयोग",
+    "contact": "नमस्ते"
+  },
   "home": {
     "hero": {
+      "titleNp": "अचार, मसला र पिठो — पुरानै तरिकाले।",
       "title": "Pickles, spices & flours — made the old way.",
       "subtitle": "From our family kitchen in Chitwan to your table",
       "body": "We've been grinding spices by hand and jarring pickles the way our grandmother taught us. No shortcuts, no factories — just good food made with patience.",

@@ -31,6 +31,8 @@ export interface SiteContent {
     url: string;
     established: number;
     place: string;
+    /** The place in Nepali, shown under the name. Optional. */
+    placeNp?: string;
     title: string;
     description: string;
     keywords: string;
@@ -48,8 +50,10 @@ export interface SiteContent {
     intro: string;
   };
   social: { facebook: string; instagram: string; tiktok: string };
+  /** Short Nepali lines shown beside the English headings. Leave one out and only English shows. */
+  nepali?: { products?: string; story?: string; dealership?: string; support?: string; contact?: string };
   home: {
-    hero: { title: string; subtitle: string; body: string; image: string; imageAlt: string };
+    hero: { titleNp?: string; title: string; subtitle: string; body: string; image: string; imageAlt: string };
     story: { title: string; paragraphs: string[]; note: string; image: string; imageAlt: string };
   };
   categories: Category[];
@@ -76,7 +80,19 @@ export interface MediaInfo {
   share: string;
 }
 
-export const content = raw as SiteContent;
+/** Small typographic care for every line of content: real apostrophes, and a dash never starts a line. */
+function polish<T>(value: T): T {
+  if (typeof value === 'string') {
+    return value.replace(/(\p{L})'(\p{L})/gu, '$1\u2019$2').replace(/ — /g, '\u00a0— ') as T;
+  }
+  if (Array.isArray(value)) return value.map(polish) as T;
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(Object.entries(value).map(([k, v]) => [k, k === 'slug' || k === 'image' || k === 'baseUrl' || k === 'url' || k === 'email' ? v : polish(v)])) as T;
+  }
+  return value;
+}
+
+export const content = polish(raw as SiteContent);
 export const media = mediaRaw as Record<string, MediaInfo>;
 
 export const products = content.products;
