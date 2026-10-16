@@ -164,18 +164,42 @@ export function Home() {
 }
 
 function Stamp({ lines, ring }: { lines: string[]; ring: string }) {
+  // Like a real rubber stamp: the words on the top arc and the year on the bottom arc
+  // both read upright, with clear space before the dotted ring and the Nepali middle.
   return (
     <svg className="stamp" viewBox="0 0 200 200" aria-hidden="true">
       <defs>
-        <path id="stamp-ring" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0" />
+        {/* top arc, left to right, letters stand outward */}
+        <path id="stamp-top" d="M27,100 A73,73 0 0,1 173,100" />
+        {/* bottom arc, left to right, letters hang inward */}
+        <path id="stamp-bottom" d="M16,100 A84,84 0 0,0 184,100" />
       </defs>
-      <circle cx="100" cy="100" r="96" fill="#0E7A0C" />
-      <circle cx="100" cy="100" r="86" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeDasharray="4 5" />
-      <text fontFamily="Mukta, sans-serif" fontWeight="700" fontSize="17" letterSpacing="3" fill="#FFFFFF">
-        <textPath href="#stamp-ring">{`${ring} • ${ring} •`}</textPath>
+      <circle cx="100" cy="100" r="97" fill="#0E7A0C" />
+      <circle cx="100" cy="100" r="92" fill="none" stroke="#FFFFFF" strokeWidth="1.5" opacity="0.55" />
+      <text fontFamily="Mukta, sans-serif" fontWeight="700" fontSize="15" letterSpacing="2.2" fill="#FFFFFF">
+        <textPath href="#stamp-top" startOffset="50%" textAnchor="middle">
+          {ring}
+        </textPath>
       </text>
+      <text fontFamily="Mukta, sans-serif" fontWeight="700" fontSize="15" letterSpacing="3" fill="#FFFFFF">
+        <textPath href="#stamp-bottom" startOffset="50%" textAnchor="middle">
+          SINCE 2006
+        </textPath>
+      </text>
+      <circle cx="21" cy="100" r="3" fill="#FFFFFF" />
+      <circle cx="179" cy="100" r="3" fill="#FFFFFF" />
+      <circle cx="100" cy="100" r="62" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeDasharray="3 5" strokeLinecap="round" opacity="0.85" />
       {lines.map((line, i) => (
-        <text key={line} x="100" y={lines.length === 1 ? 112 : 94 + i * 34} textAnchor="middle" fontFamily="Kalam, cursive" fontWeight="700" fontSize={i === 0 ? 34 : 30} fill="#FFFFFF">
+        <text
+          key={line}
+          x="100"
+          y={lines.length === 1 ? 110 : 96 + i * 30}
+          textAnchor="middle"
+          fontFamily="Kalam, cursive"
+          fontWeight="700"
+          fontSize={i === 0 ? 30 : 25}
+          fill="#FFFFFF"
+        >
           {line}
         </text>
       ))}
