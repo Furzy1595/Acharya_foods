@@ -1,8 +1,9 @@
 # Builds the website and publishes it on acharyafoods.com.np.
 #
-# GitHub Pages serves the top folder of the "main" branch ("Deploy from a branch").
-# The source lives in site/; this workflow builds it and places the finished pages at the
-# top of main, then asks GitHub Pages to publish. It runs whenever anything in site/
+# Works with either GitHub Pages setting (Settings -> Pages -> Source):
+# - "GitHub Actions" (the setting in use): the built site is deployed by the last job.
+# - "Deploy from a branch: main / root": the finished pages are also kept at the top of main.
+# The source lives in site/. It runs whenever anything in site/
 # changes - including when the business system publishes new content
 # (site/content/site.json and site/content/media/).
 name: Publish website
@@ -16,6 +17,7 @@ on:
 permissions:
   contents: write
   pages: write
+  id-token: write
 
 concurrency:
   group: publish-website
@@ -49,7 +51,16 @@ jobs:
             git commit -m "Publish website build"
             git push
           fi
-      - name: Ask GitHub Pages to publish
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages will publish from the push."
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+
+  deploy:
+    needs: publish
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

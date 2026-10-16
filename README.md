@@ -50,11 +50,11 @@ To try the forms against a business system on your own computer:
 
 ## Publishing
 
-GitHub Pages is set to **Deploy from a branch: main, / (root)**, and serves the finished pages
-at the top of this repository (`index.html`, `assets/`, `products/` and so on - listed in
-`.published-files`). Do not edit those by hand: whenever anything in `site/` changes on `main`,
-`.github/workflows/deploy.yml` builds the site, replaces them, and asks Pages to publish.
-Keep the Pages setting as it is; switching it to "GitHub Actions" is not needed.
+`.github/workflows/deploy.yml` builds `site/` whenever anything in it changes on `main` and
+publishes it. GitHub Pages is set to **Source: GitHub Actions** with the custom domain
+acharyafoods.com.np (Settings -> Pages). The finished pages are also kept at the top of `main`
+(listed in `.published-files`), so the site still works if the source is ever switched to
+"Deploy from a branch: main, / (root)". Do not edit those files by hand.
 
 | Folder | What is in it |
 |--------|---------------|
