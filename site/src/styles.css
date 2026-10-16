@@ -1237,3 +1237,305 @@ ol {
     scroll-behavior: auto !important;
   }
 }
+
+/* ======================================================================
+   Phones and tablets
+   ====================================================================== */
+
+/* Notches and home bars */
+.site-header__inner,
+.container {
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
+}
+
+/* The quick-contact bar: only on phones */
+.mobile-bar {
+  display: none;
+}
+.jump-to-form {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  body {
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+  }
+  .mobile-bar {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 60;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    padding: 0.6rem max(0.75rem, env(safe-area-inset-left)) calc(0.6rem + env(safe-area-inset-bottom));
+    background: rgb(255 255 255 / 0.97);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -10px 24px -18px rgb(10 60 10 / 0.45);
+  }
+  .mobile-bar a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: 3.1rem;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .mobile-bar__call {
+    background: var(--green);
+    color: var(--white);
+  }
+  .mobile-bar__call:hover {
+    color: var(--white);
+  }
+  .mobile-bar__msg {
+    border: 2px solid var(--ink);
+    color: var(--ink);
+  }
+  /* the bar has Call, so the header keeps just the logo and the menu */
+  .call-button {
+    display: none;
+  }
+
+  /* Hero */
+  .hero__inner {
+    padding-block: 1.75rem 2.5rem;
+    gap: 1.5rem;
+  }
+  .hero .button-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 1.5rem;
+  }
+  .hero__photo {
+    padding: 1rem 0.25rem 1.5rem;
+  }
+  .stamp {
+    left: auto;
+    right: -0.25rem;
+    top: -0.5rem;
+    bottom: auto;
+    width: 6.25rem;
+  }
+  .print figcaption {
+    font-size: 1.3rem;
+  }
+
+  /* Product tabs: one row that scrolls sideways */
+  .tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-inline: calc(var(--gutter) * -1);
+    padding: 0.2rem var(--gutter) 0.4rem;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .tab {
+    flex: none;
+    scroll-snap-align: start;
+  }
+  .section-head {
+    gap: 1rem;
+  }
+  .section-head .tabs {
+    width: calc(100% + var(--gutter) * 2);
+  }
+
+  /* Product cards: Nepali name, English name, price, each on its own line */
+  .product-card__row {
+    flex-direction: column;
+    gap: 0;
+    line-height: 1.35;
+  }
+  .product-card__price {
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .seal {
+    top: 0.4rem;
+    right: 0.4rem;
+    box-shadow: 0 0 0 3px var(--white);
+  }
+  .seal--large {
+    top: auto;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    box-shadow: 0 0 0 4px var(--white);
+  }
+
+  /* Breadcrumbs big enough to tap */
+  .crumbs a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+  }
+  .crumbs {
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Story */
+  .steps li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1rem;
+    align-items: center;
+    padding: 1.1rem 1.25rem;
+  }
+  .steps__n {
+    grid-row: span 2;
+    font-size: 2.75rem;
+  }
+  .steps__np {
+    margin-top: 0;
+    font-size: 1.4rem;
+  }
+
+  /* Dealership */
+  .benefit-cards li {
+    padding: 1rem 1.1rem;
+  }
+  .benefit-cards strong {
+    font-size: 1.1rem;
+  }
+  .jump-to-form {
+    display: flex;
+    width: 100%;
+    margin: 1.25rem 0 0.5rem;
+  }
+  .choices__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .choice {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  /* Contact tiles */
+  .contact-tiles__pair {
+    grid-template-columns: 1fr;
+  }
+  .tile {
+    padding: 1.1rem 1.25rem;
+  }
+  .tile__value--small {
+    font-size: 1.05rem;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  /* Footer: links in two columns, each a full finger tall */
+  .site-footer__links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1rem;
+  }
+  .site-footer__links a,
+  .site-footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+  }
+  .site-footer p a {
+    min-height: 0;
+    display: inline;
+  }
+  .site-footer__logo {
+    height: 4rem;
+  }
+}
+
+/* Very narrow phones (320–359 px) */
+@media (max-width: 359px) {
+  .hero__big {
+    font-size: 5.5rem;
+  }
+  .product-grid {
+    gap: 1.5rem 0.75rem;
+  }
+  .choices__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tablets: two columns where there is room, never three cramped ones */
+@media (min-width: 640px) and (max-width: 899px) {
+  .hero__inner,
+  .story__inner,
+  .dealer-band__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hero__big {
+    font-size: 7.5rem;
+  }
+  .hero__rest {
+    font-size: 2.6rem;
+  }
+  .story__year {
+    font-size: 7rem;
+  }
+  .product-grid,
+  .steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .steps li {
+    padding: 1.25rem;
+  }
+  .contact-tiles {
+    grid-template-columns: 1fr 1fr;
+  }
+  .contact-tiles__pair {
+    grid-column: 1 / -1;
+  }
+  .stamp {
+    left: auto;
+    right: -0.75rem;
+    top: -0.25rem;
+    bottom: auto;
+    width: 6.5rem;
+  }
+}
+
+/* Footer links and breadcrumbs: a full finger tall everywhere */
+.site-footer__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0;
+}
+.crumbs a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+.crumbs {
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.tile__value--small {
+  font-size: clamp(1rem, 0.85rem + 0.6vw, 1.25rem);
+  overflow-wrap: normal;
+}
+
+/* Phones held sideways: the hero should not fill three screens */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero__big {
+    font-size: 5rem;
+  }
+  .hero__rest {
+    font-size: 2.2rem;
+  }
+}
+
+/* Touch screens: no hover-only effects, comfortable targets */
+@media (hover: none) {
+  .product-card__link:hover .product-card__np {
+    color: inherit;
+  }
+}

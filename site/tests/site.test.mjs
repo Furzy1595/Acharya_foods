@@ -186,6 +186,23 @@ await check('phone: the menu opens, goes to Dealership and closes itself', async
   await context.close();
 });
 
+await check('phones get a Call / Become a dealer bar at the bottom that never hides the page; computers do not', async () => {
+  const phone = await open(site.url, '/', { width: 390, height: 800 });
+  const bar = phone.page.locator('.mobile-bar');
+  expect(await bar.isVisible(), 'bar missing on a phone');
+  expect((await bar.getByRole('link', { name: 'Call us' }).getAttribute('href')).startsWith('tel:'), 'Call is not a phone link');
+  const covered = await phone.page.evaluate(() => {
+    window.scrollTo(0, document.documentElement.scrollHeight);
+    const footerBottom = document.querySelector('.site-footer__bottom').getBoundingClientRect().bottom;
+    return footerBottom - document.querySelector('.mobile-bar').getBoundingClientRect().top;
+  });
+  expect(covered <= 1, `the bar covers ${covered}px of the page end`);
+  await phone.context.close();
+  const desk = await open(site.url, '/', { width: 1280, height: 800 });
+  expect(!(await desk.page.locator('.mobile-bar').isVisible()), 'bar shows on a computer');
+  await desk.context.close();
+});
+
 await check('"Our story" in the menu goes to the story on the home page, also from another page', async () => {
   const { page, context } = await open(site.url, '/contact/');
   await page.locator('#site-nav').getByRole('link', { name: 'Our story' }).click();

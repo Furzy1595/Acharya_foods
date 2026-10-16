@@ -36,6 +36,14 @@ export function Layout() {
     window.scrollTo(0, 0);
   }, [location.pathname, location.hash]);
 
+  // Escape closes the phone menu.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setMenuOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [menuOpen]);
+
   const socials = [
     { label: 'Facebook', url: social.facebook },
     { label: 'Instagram', url: social.instagram },
@@ -148,6 +156,16 @@ export function Layout() {
           </div>
         </div>
       </footer>
+
+      {/* Phones: the two things people come for, always under the thumb. */}
+      <nav className="mobile-bar" aria-label="Quick contact">
+        <a className="mobile-bar__call" href={tel}>
+          <PhoneIcon /> Call us
+        </a>
+        <Link className="mobile-bar__msg" to={location.pathname.startsWith('/dealership') ? '/contact/' : '/dealership/'}>
+          {location.pathname.startsWith('/dealership') ? 'Send a message' : 'Become a dealer'}
+        </Link>
+      </nav>
     </>
   );
 }
