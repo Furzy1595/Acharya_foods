@@ -17,6 +17,10 @@
   "api": {
     "baseUrl": ""
   },
+  "forms": {
+    "sendTo": "acharyafoodsudhog@gmail.com",
+    "relay": "https://formsubmit.co/ajax/"
+  },
   "contact": {
     "addressName": "Acharya Foods",
     "addressLine": "Ratnanagar-3, Chitwan, Nepal",

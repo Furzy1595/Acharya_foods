@@ -40,6 +40,8 @@ export interface SiteContent {
     footerNote: string;
   };
   api: { baseUrl: string };
+  /** Where form messages go by email while the business system is not linked. */
+  forms?: { sendTo: string; relay: string };
   contact: {
     addressName: string;
     addressLine: string;

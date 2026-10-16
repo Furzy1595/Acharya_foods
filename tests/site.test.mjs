@@ -139,7 +139,7 @@ await check('nothing is wider than the screen at 360, 390, 768, 1024 and 1440 px
       const over = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
       expect(over <= 0, `${url} at ${width}px is ${over}px too wide`);
       const small = await page.evaluate(() =>
-        [...document.querySelectorAll('input:not([tabindex="-1"]), select, textarea')].filter((el) => parseFloat(getComputedStyle(el).fontSize) < 16).length,
+        [...document.querySelectorAll('input:not([tabindex="-1"]):not([type=checkbox]), select, textarea')].filter((el) => parseFloat(getComputedStyle(el).fontSize) < 16).length,
       );
       expect(small === 0, `${url} at ${width}px has ${small} boxes that make an iPhone zoom`);
       await context.close();
@@ -239,13 +239,20 @@ await check('dealership form: missing answers are asked for; a complete applicat
   await page.getByRole('button', { name: 'Send application' }).click();
   await page.waitForTimeout(300);
   expect(api.state.received.length === before, 'an incomplete application was sent');
+  const errors = await page.locator('.field__error').allTextContents();
+  expect(errors.length === 3 && errors.some((t) => t.includes('phone number')) && errors.some((t) => t.includes('town')), `errors shown: ${errors.join(' | ')}`);
+  const focused = await page.evaluate(() => document.activeElement?.getAttribute('data-field'));
+  expect(focused === 'phone', `cursor went to ${focused}`);
   await field(page, 'Phone').fill('9811111111');
   await field(page, 'Business name').fill('Ram Kirana Pasal');
   await field(page, 'Type of business').selectOption('kirana');
   await field(page, 'Location').fill('Bharatpur, Chitwan');
+  await page.getByRole('checkbox', { name: /Mango Pickle/ }).check();
+  await page.getByRole('checkbox', { name: /Buckwheat Flour/ }).check();
   await page.getByRole('button', { name: 'Send application' }).click();
   await page.getByRole('heading', { name: 'Application sent' }).waitFor();
   const got = api.state.received.at(-1);
+  expect(JSON.stringify(got.interestedIn) === '["mango-pickle","buckwheat-flour"]', `products: ${JSON.stringify(got.interestedIn)}`);
   expect(got.type === 'dealer' && got.businessType === 'kirana' && got.businessName === 'Ram Kirana Pasal' && got.location === 'Bharatpur, Chitwan', `system got ${JSON.stringify(got)}`);
   expect(await page.getByText('within 48 hours').first().isVisible(), '48-hour promise not shown');
   await context.close();
@@ -257,8 +264,8 @@ await check('support form: needs a phone or an email; then arrives with product,
   await field(page, 'Your name').fill('Gita');
   await field(page, 'What happened?').fill('The lid was loose.');
   await page.getByRole('button', { name: 'Send request' }).click();
-  await page.getByRole('alert').waitFor();
-  expect((await page.getByRole('alert').textContent()).includes('phone number or an email'), 'wrong explanation');
+  await page.locator('.field__error').first().waitFor();
+  expect((await page.locator('.field__error').first().textContent()).includes('phone number or an email'), 'wrong explanation');
   expect(api.state.received.length === before, 'sent without a way to answer');
   await field(page, 'Email').fill('gita@example.com');
   await field(page, 'Which product?').selectOption('chilli-pickle');
@@ -311,21 +318,76 @@ for (const [name, breakIt] of [
 site.server.close();
 
 // ---------------------------------------------------------------- not linked yet (today's state)
-console.log('\nBuilding the site as it is published today (business system not linked yet)…');
+console.log('\nBuilding the site as it is published today (business system not linked: forms are emailed)…');
 build({ VITE_API_BASE: '' });
 site = await serveDist();
-console.log('\nBefore the business system is linked');
-await check('forms hand the message to the visitor\'s email app instead of pretending it was sent', async () => {
-  expect(content.api.baseUrl === '', 'content/site.json already has an address; this check is for the unlinked state');
+console.log('\nEmailing forms to ' + content.forms.sendTo);
+
+async function dealerFilled(relayAnswer) {
   const { page, context } = await open(site.url, '/dealership/');
+  const seen = [];
+  await page.route('https://formsubmit.co/**', async (route) => {
+    seen.push({ url: route.request().url(), body: JSON.parse(route.request().postData() || '{}') });
+    if (relayAnswer === 'offline') return route.abort();
+    await route.fulfill({ status: 200, contentType: 'application/json', headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify(relayAnswer) });
+  });
   await field(page, 'Your name').fill('Ram Bahadur');
   await field(page, 'Phone').fill('9811111111');
-  await field(page, 'Type of business').selectOption('retail');
-  await field(page, 'Location').fill('Hetauda');
-  await page.getByRole('button', { name: 'Send by email' }).click();
-  await page.getByRole('heading', { name: 'Your email app has the message' }).waitFor();
-  const body = decodeURIComponent((await page.getByRole('link', { name: 'Send by email' }).getAttribute('href')).split('body=')[1]);
-  expect(body.includes('Type of business: Retail Store') && body.includes('Location: Hetauda'), `email text is: ${body}`);
+  await field(page, 'Email').fill('ram@example.com');
+  await field(page, 'Business name').fill('Ram Kirana Pasal');
+  await field(page, 'Type of business').selectOption('kirana');
+  await field(page, 'Location').fill('Hetauda, Makwanpur');
+  await page.getByRole('checkbox', { name: /Chilli Pickle/ }).check();
+  await page.waitForTimeout(1600);
+  await page.getByRole('button', { name: 'Send application' }).click();
+  return { page, context, seen };
+}
+
+await check(`dealership application is emailed to ${content.forms.sendTo}, readable, with a reply to the applicant`, async () => {
+  const { page, context, seen } = await dealerFilled({ success: 'true', message: 'The form was submitted successfully.' });
+  await page.getByRole('heading', { name: 'Application sent' }).waitFor();
+  expect(seen.length === 1, `${seen.length} requests`);
+  expect(seen[0].url === 'https://formsubmit.co/ajax/' + encodeURIComponent(content.forms.sendTo), `sent to ${seen[0].url}`);
+  const b = seen[0].body;
+  expect(b._subject === 'New dealership application: Ram Bahadur (Ram Kirana Pasal, Hetauda, Makwanpur)', `subject: ${b._subject}`);
+  expect(b['Type of business'] === 'Kirana / General Store' && b['Would like to stock'] === 'Chilli Pickle' && b.Phone === '9811111111', JSON.stringify(b));
+  expect(b._replyto === 'ram@example.com' && b._autoresponse.includes('within 48 hours'), 'no reply-to or confirmation for the applicant');
+  expect(b['Sent from'] === content.site.url + '/dealership/', `page: ${b['Sent from']}`);
+  await context.close();
+  return 'subject: ' + b._subject;
+});
+
+for (const [name, answer] of [
+  ['the email service is not activated yet', { success: 'false', message: 'This form needs Activation.' }],
+  ['the email service cannot be reached', 'offline'],
+]) {
+  await check(`${name}: the applicant is told and keeps what they typed`, async () => {
+    const { page, context } = await dealerFilled(answer);
+    await page.getByRole('heading', { name: 'Not sent yet' }).waitFor({ timeout: 20000 });
+    const body = decodeURIComponent((await page.getByRole('link', { name: 'Send by email' }).getAttribute('href')).split('body=')[1]);
+    expect(body.includes('Type of business: Kirana / General Store') && body.includes('Would like to stock: Chilli Pickle'), `email text is: ${body}`);
+    await page.getByRole('button', { name: /Back to the form/ }).click();
+    expect((await field(page, 'Location').inputValue()) === 'Hetauda, Makwanpur', 'the answers were lost');
+    await context.close();
+  });
+}
+
+await check('a robot that fills the hidden box gets "sent" and nothing is emailed', async () => {
+  const { page, context } = await open(site.url, '/contact/');
+  let calls = 0;
+  await page.route('https://formsubmit.co/**', (route) => { calls += 1; return route.abort(); });
+  await page.evaluate(() => {
+    const trap = document.querySelector('.trap input');
+    const set = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
+    set.call(trap, 'http://spam.example'); trap.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  await field(page, 'Your name').fill('Bot');
+  await field(page, 'Phone').fill('1234567890');
+  await field(page, 'Message').fill('Buy now');
+  await page.waitForTimeout(1600);
+  await page.getByRole('button', { name: 'Send message' }).click();
+  await page.getByRole('heading', { name: 'Message sent' }).waitFor();
+  expect(calls === 0, `${calls} emails sent`);
   await context.close();
 });
 site.server.close();

@@ -21,11 +21,17 @@ there. Do not edit wording in `src/`. The format is described in
 
 ## Messages from visitors
 
-The contact form, the dealership application and the support form send what the visitor wrote
-to the business system (`api.baseUrl` in `content/site.json`). If the system cannot be reached,
-the visitor is told so and offered the same message by email, WhatsApp or phone - nothing is
-dropped silently. While `api.baseUrl` is empty, the forms open the visitor's email app with the
-message filled in.
+The contact form, the dealership application and the support form send what the visitor wrote:
+
+1. to the business system, once it is linked (`api.baseUrl` in `content/site.json`);
+2. until then, by email to `forms.sendTo` (acharyafoodsudhog@gmail.com) through
+   [FormSubmit](https://formsubmit.co), a free form-to-email service. The applicant also gets a
+   short confirmation email when they gave an address, and pressing Reply in Gmail answers them.
+
+**One-time step:** the very first message makes FormSubmit send an "Activate Form" email to
+acharyafoodsudhog@gmail.com. Press the button in it once; every later message arrives as a normal
+email. Until it is activated, visitors are told the message was not sent and are offered email,
+WhatsApp or phone with their words already filled in - nothing is dropped silently.
 
 ## Working on it
 
