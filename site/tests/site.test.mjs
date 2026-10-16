@@ -122,6 +122,58 @@ await check('the text is in the HTML file itself (readable without JavaScript, f
   expect(routes.every((r) => sitemap.includes(`${content.site.url}${r}<`)), 'sitemap misses a page');
 });
 
+await check('search engines: each page has its own title (≤ 65) and description (70–160), valid structured data, and is in the sitemap', async () => {
+  const sitemap = fs.readFileSync(path.join(root, 'dist/sitemap.xml'), 'utf8');
+  const seenTitles = new Set();
+  const seenDescriptions = new Set();
+  for (const url of routes) {
+    const file = path.join(root, 'dist', url, 'index.html');
+    const html = fs.readFileSync(file, 'utf8');
+    const decode = (t) => t.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+    const title = decode(html.match(/<title>(.*?)<\/title>/)[1]);
+    const description = decode(html.match(/name="description" content="(.*?)"/)[1]);
+    expect(title.length <= 65, `${url}: title is ${title.length} characters: ${title}`);
+    expect(description.length >= 70 && description.length <= 160, `${url}: description is ${description.length} characters`);
+    expect(!seenTitles.has(title) && !seenDescriptions.has(description), `${url} repeats another page's title or description`);
+    seenTitles.add(title);
+    seenDescriptions.add(description);
+    expect(html.includes('max-image-preview:large') && html.includes(`<link rel="canonical" href="${content.site.url}${url}"`), `${url}: robots or canonical missing`);
+    const graph = JSON.parse(html.match(/application\/ld\+json">(.*?)<\/script>/)[1])['@graph'];
+    const types = graph.map((n) => [].concat(n['@type']).join('+'));
+    expect(types.includes('LocalBusiness+Organization') && types.includes('WebSite'), `${url}: business details missing (${types})`);
+    if (url !== '/') expect(types.includes('BreadcrumbList'), `${url}: breadcrumbs missing`);
+    if (/^\/products\/(?!category)[^/]+\/$/.test(url)) {
+      const product = graph.find((n) => n['@type'] === 'Product');
+      expect(product?.offers?.priceCurrency === 'NPR' && product.image?.length && product.brand?.name, `${url}: product details incomplete`);
+    }
+    expect(sitemap.includes(`<loc>${content.site.url}${url}</loc>`), `${url} not in the sitemap`);
+    const imgs = html.match(/<img [^>]*>/g) ?? [];
+    expect(imgs.every((i) => /alt="[^"]+"/.test(i) || /aria-hidden="true"/.test(i)), `${url}: a picture has no description`);
+  }
+  expect(sitemap.includes('<image:loc>'), 'sitemap lists no pictures');
+  const robots = fs.readFileSync(path.join(root, 'dist/robots.txt'), 'utf8');
+  expect(robots.includes(`Sitemap: ${content.site.url}/sitemap.xml`) && !/Disallow:\s*\/\s*$/m.test(robots), 'robots.txt blocks the site or misses the sitemap');
+  return `${routes.length} pages`;
+});
+
+await check('every page can be reached by following links from the home page (no orphan pages)', async () => {
+  const seen = new Set(['/']);
+  const queue = ['/'];
+  while (queue.length) {
+    const url = queue.shift();
+    const html = fs.readFileSync(path.join(root, 'dist', url, 'index.html'), 'utf8');
+    for (const [, href] of html.matchAll(/href="(\/[^"#?]*)"/g)) {
+      const clean = href.endsWith('/') ? href : href + '/';
+      if (routes.includes(clean) && !seen.has(clean)) {
+        seen.add(clean);
+        queue.push(clean);
+      }
+    }
+  }
+  const missing = routes.filter((r) => !seen.has(r));
+  expect(missing.length === 0, `not linked: ${missing.join(', ')}`);
+});
+
 await check('an address that does not exist shows the "not here" page with a way back', async () => {
   const { page, context, status } = await open(site.url, '/no-such-page/');
   expect(status === 404, `answered ${status}`);

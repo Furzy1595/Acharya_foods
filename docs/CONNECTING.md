@@ -23,13 +23,13 @@ The business system writes the whole file each time. `schemaVersion` is `1`.
 | Part | Meaning |
 |------|---------|
 | `publishedAt`, `publishedBy` | When and by whom (shown nowhere; for the record) |
-| `site` | Name, address of the site, founding year, the place in English and in Nepali (`placeNp`), the home page's title and description for search engines, footer wording |
+| `site` | `googleVerification` / `bingVerification`: the codes from Google Search Console and Bing Webmaster Tools ("HTML tag" method). Name, address of the site, founding year, the place in English and in Nepali (`placeNp`), the home page's title and description for search engines, footer wording |
 | `api.baseUrl` | The internet address of the business system, without a slash at the end. Empty = not linked: forms use email |
 | `contact` | Address, phone, WhatsApp number (empty hides WhatsApp), email, wording of the contact page |
 | `social` | Facebook, Instagram, TikTok addresses. Empty ones are not shown |
 | `nepali` | The short Nepali lines shown beside the English headings: `products`, `story`, `dealership`, `support`, `contact`. Leave one out and only English shows |
 | `home.hero`, `home.story` | Wording and photo of the top of the home page and of "Our story". `home.hero.titleNp` is the large Nepali line at the top of the home page |
-| `categories[]` | `slug`, `name`, in the order they are shown. A category without products is not shown |
+| `categories[]` | `slug`, `name`, in the order they are shown; for search engines also `seoName` (the name people search for, used as the page heading and title, e.g. "Nepali Pickles (Achar)"), `seoTag` (added to each product's title, e.g. "– Nepali Achar") and `intro` (one or two sentences at the top of the category page). A category without products is not shown |
 | `products[]` | In the order they are shown: `id`, `slug` (the product's address, never change it once published), `name`, `nameNp`, `category`, `price` (rupees; leave out or `null` to show no price), `pack` (for example "400 g jar"; optional), `image` (a file name in `site/content/media/`), `description` |
 | `dealership` | Wording, the list of benefits, the kinds of business offered in the form |
 | `support` | Wording and the questions and answers. An empty list hides "Asked often" |

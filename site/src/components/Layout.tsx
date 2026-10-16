@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 import scene from '../assets/nepal-footer.svg';
-import { content, digits } from '../content';
+import { categories, content, digits } from '../content';
 import { seoFor } from '../seo';
 import { CloseIcon, MenuIcon, PhoneIcon } from './Icons';
 
@@ -120,6 +120,16 @@ export function Layout() {
               {NAV.map((item) => (
                 <li key={item.to}>
                   <Link to={item.to}>{item.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <nav aria-label="Our products">
+            <h2 className="site-footer__heading">Our products</h2>
+            <ul className="site-footer__links site-footer__links--one">
+              {categories.map((c) => (
+                <li key={c.slug}>
+                  <Link to={`/products/category/${c.slug}/`}>{c.seoName ?? c.name}</Link>
                 </li>
               ))}
             </ul>

@@ -1,5 +1,5 @@
 import { NavLink, useParams } from 'react-router-dom';
-import { categories, categoryName, content, products } from '../content';
+import { categories, categoryName, content, findCategory, products } from '../content';
 import { Heading } from '../components/Heading';
 import { ProductGrid } from '../components/ProductCard';
 import { NotFound } from './NotFound';
@@ -14,7 +14,7 @@ export function Products() {
       <div className="container">
         <div className="section-head">
           <Heading as="h1" np={category ? undefined : content.nepali?.products}>
-            {category ? categoryName(category) : 'Our products'}
+            {category ? findCategory(category)?.seoName ?? categoryName(category) : 'Our products'}
           </Heading>
           <nav className="tabs" aria-label="Kinds of product">
             <NavLink to="/products/" end className="tab">
@@ -27,6 +27,7 @@ export function Products() {
             ))}
           </nav>
         </div>
+        {category && findCategory(category)?.intro && <p className="lead category-intro">{findCategory(category)?.intro}</p>}
         <ProductGrid items={shown} />
       </div>
     </section>

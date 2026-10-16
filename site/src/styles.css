@@ -1168,8 +1168,12 @@ ol {
 }
 @media (min-width: 760px) {
   .site-footer__grid {
-    grid-template-columns: 5fr 3fr 4fr;
+    grid-template-columns: 4fr 2fr 3fr 3fr;
   }
+}
+.category-intro {
+  margin: -0.5rem 0 2rem;
+  max-width: 60ch;
 }
 .site-footer__logo {
   width: auto;
@@ -1451,7 +1455,7 @@ ol {
   }
 
   /* Footer: links in two columns, each a full finger tall */
-  .site-footer__links {
+  .site-footer__links:not(.site-footer__links--one) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 1rem;

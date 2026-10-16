@@ -25,6 +25,12 @@ export interface Product {
 export interface Category {
   slug: string;
   name: string;
+  /** The name people search for, e.g. "Nepali Pickles (Achar)". Used in page titles. */
+  seoName?: string;
+  /** Added after a product's name in its page title, e.g. "– Nepali Achar". */
+  seoTag?: string;
+  /** One or two sentences shown at the top of the category's page. */
+  intro?: string;
 }
 
 export interface SiteContent {
@@ -43,6 +49,9 @@ export interface SiteContent {
     description: string;
     keywords: string;
     footerBlurb: string;
+    /** Codes from Google Search Console and Bing Webmaster Tools ("HTML tag" method). */
+    googleVerification?: string;
+    bingVerification?: string;
     footerNote: string;
   };
   api: { baseUrl: string };
@@ -120,6 +129,10 @@ export const products = content.products;
 
 /** Categories that have at least one product, in the order set in the business system. */
 export const categories = content.categories.filter((c) => products.some((p) => p.category === c.slug));
+
+export function findCategory(slug: string | undefined): Category | undefined {
+  return content.categories.find((c) => c.slug === slug);
+}
 
 export function categoryName(slug: string): string {
   return content.categories.find((c) => c.slug === slug)?.name ?? slug;

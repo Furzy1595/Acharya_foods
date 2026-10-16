@@ -7,13 +7,15 @@
     "url": "https://acharyafoods.com.np",
     "established": 2006,
     "place": "Chitwan, Nepal",
-    "title": "Acharya Foods — Handcrafted Nepali Pickles, Spices & Flour | Chitwan, Nepal",
-    "description": "Acharya Foods brings you handcrafted Nepali pickles, spice blends, and stone-ground flours from our family kitchen in Chitwan. Made the old way since 2006.",
-    "keywords": "Nepali pickles, achar, Nepali spices, buckwheat flour, millet flour, Acharya Foods, Chitwan food, traditional Nepali food",
+    "title": "Nepali Pickles, Spices & Flour from Chitwan | Acharya Foods",
+    "description": "Handmade Nepali achar, spices and stone-ground flours from Acharya Foods, Chitwan, Nepal, since 2006. No artificial colours or preservatives.",
+    "keywords": "Nepali pickles, achar, Nepali achar, aanp ko achar, mango pickle Nepal, chilli pickle, buckwheat flour, phapar, millet flour, kodo, Chitwan food, Acharya Foods",
     "footerBlurb": "Family-made pickles, spices and flours from Chitwan, Nepal. Made the old way since 2006.",
     "footerNote": "A family tradition since 2006",
     "placeNp": "चितवन, नेपाल",
-    "taglineNp": "घरको स्वाद, २००६ देखि"
+    "taglineNp": "घरको स्वाद, २००६ देखि",
+    "googleVerification": "",
+    "bingVerification": ""
   },
   "api": {
     "baseUrl": ""
@@ -75,11 +77,41 @@
     }
   },
   "categories": [
-    { "slug": "pickles", "name": "Pickles" },
-    { "slug": "spices", "name": "Spices" },
-    { "slug": "flour", "name": "Flour" },
-    { "slug": "snacks", "name": "Snacks" },
-    { "slug": "seasoning", "name": "Seasoning" }
+    {
+      "slug": "pickles",
+      "name": "Pickles",
+      "seoTag": "– Nepali Achar",
+      "seoName": "Nepali Pickles (Achar)",
+      "intro": "Our achar is made in small batches in Chitwan with mustard oil, timur and hand-ground spices — mango, chilli and mixed vegetable, with no artificial colours or preservatives."
+    },
+    {
+      "slug": "spices",
+      "name": "Spices",
+      "seoTag": "– Nepali Masala",
+      "seoName": "Nepali Spices (Masala)",
+      "intro": "Spice blends ground by hand in our Chitwan kitchen, for chatpate, fruit and everyday Nepali cooking."
+    },
+    {
+      "slug": "flour",
+      "name": "Flour",
+      "seoTag": "– Nepali Flour",
+      "seoName": "Nepali Flour (Pitho)",
+      "intro": "Stone-ground buckwheat (phapar) and finger millet (kodo) flour from Chitwan — for dhido, roti and traditional Nepali meals."
+    },
+    {
+      "slug": "snacks",
+      "name": "Snacks",
+      "seoTag": "– Nepali Snack",
+      "seoName": "Nepali Snacks (Khaja)",
+      "intro": "Roasted corn (makai) and roasted soybeans (bhatmas), seasoned the Nepali way — the snacks to have with tea."
+    },
+    {
+      "slug": "seasoning",
+      "name": "Seasoning",
+      "seoTag": "",
+      "seoName": "Seasoning",
+      "intro": "Seasoning from our Chitwan kitchen for chowmein, momo, fried rice and everyday savoury Nepali cooking — a pinch is all it takes."
+    }
   ],
   "products": [
     {
