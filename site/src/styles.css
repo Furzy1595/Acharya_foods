@@ -1200,11 +1200,21 @@ ol {
   margin-top: 0.5rem;
 }
 .site-footer__scene {
+  /* The whole panorama at its own proportions, so no peak is cut off; on narrow
+     screens it keeps a usable height and trims the sides instead of the summits. */
   display: block;
   width: 100%;
-  height: clamp(11rem, 24vw, 22rem);
+  height: auto;
+  min-height: 11rem;
+  margin-top: clamp(-4rem, -4vw, -1rem); /* its sky is see-through: let it rise behind the text */
   object-fit: cover;
   object-position: center bottom;
+  position: relative;
+  z-index: 0;
+}
+.site-footer__grid {
+  position: relative;
+  z-index: 1;
 }
 .site-footer__bottom {
   background: #245a22;
