@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "publishedAt": "2026-10-10T00:00:00+05:45",
+  "publishedBy": "Imported from the previous website",
+  "site": {
+    "name": "Acharya Foods",
+    "url": "https://acharyafoods.com.np",
+    "established": 2006,
+    "place": "Chitwan, Nepal",
+    "title": "Acharya Foods — Handcrafted Nepali Pickles, Spices & Flour | Chitwan, Nepal",
+    "description": "Acharya Foods brings you handcrafted Nepali pickles, spice blends, and stone-ground flours from our family kitchen in Chitwan. Made the old way since 2006.",
+    "keywords": "Nepali pickles, achar, Nepali spices, buckwheat flour, millet flour, Acharya Foods, Chitwan food, traditional Nepali food",
+    "footerBlurb": "Family-made pickles, spices and flours from Chitwan, Nepal. Made the old way since 2006.",
+    "footerNote": "A family tradition since 2006",
+    "placeNp": "चितवन, नेपाल",
+    "taglineNp": "घरको स्वाद, २००६ देखि"
+  },
+  "api": {
+    "baseUrl": ""
+  },
+  "forms": {
+    "sendTo": "acharyafoodsudhog@gmail.com",
+    "relay": "https://formsubmit.co/ajax/"
+  },
+  "contact": {
+    "addressName": "Acharya Foods",
+    "addressLine": "Ratnanagar-3, Chitwan, Nepal",
+    "phone": "+977 9845222314",
+    "whatsapp": "",
+    "email": "acharyafoodsudhog@gmail.com",
+    "title": "We'd love to hear from you",
+    "intro": "Want to stock our products, have a question, or just want to say namaste? Call, write, or visit us in Ratnanagar."
+  },
+  "social": {
+    "facebook": "",
+    "instagram": "",
+    "tiktok": ""
+  },
+  "nepali": {
+    "products": "हाम्रा उत्पादन",
+    "story": "हाम्रो कथा",
+    "dealership": "डिलर बन्नुहोस्",
+    "support": "सहयोग",
+    "contact": "नमस्ते"
+  },
+  "home": {
+    "hero": {
+      "eyebrowNp": "चितवनको भान्साबाट, २००६ देखि",
+      "bigNp": "अचार",
+      "restNp": "मसला र पिठो",
+      "title": "Pickles, spices & flours — made the old way.",
+      "body": "We grind spices by hand and jar pickles the way our grandmother taught us. No shortcuts, no factories — just good food made with patience.",
+      "image": "pickle-banner.jpg",
+      "imageAlt": "Acharya's Classic Pickles — Mixed, Green Chilli, and Mango varieties arranged with fresh ingredients on a wooden table",
+      "photoCaptionNp": "घरको स्वाद, हरेक बट्टामा",
+      "stampNp": [
+        "हातले",
+        "बनाएको"
+      ],
+      "stampText": "HANDMADE IN CHITWAN"
+    },
+    "story": {
+      "lead": "Mrs. Laxmi Acharya starts making pickles in her kitchen in Chitwan, the way her grandmother did.",
+      "title": "Three generations. One kitchen. Same recipes.",
+      "paragraphs": [
+        "Neighbours kept asking for more. Friends wanted jars for their families. Before long, what was a home recipe became something bigger.",
+        "Twenty years later, not much has changed. We still pick the ingredients ourselves and follow the same recipes. The kitchen is bigger, but the hands and the heart behind every jar are still the same family.",
+        "Every product is free of artificial colours, flavours and preservatives."
+      ],
+      "steps": [
+        { "np": "आफैं छान्छौं", "text": "We pick the ingredients ourselves" },
+        { "np": "हातले पिस्छौं", "text": "Spices ground by hand" },
+        { "np": "धैर्यले पकाउँछौं", "text": "If it takes three days, we take three days" }
+      ]
+    }
+  },
+  "categories": [
+    { "slug": "pickles", "name": "Pickles" },
+    { "slug": "spices", "name": "Spices" },
+    { "slug": "flour", "name": "Flour" },
+    { "slug": "snacks", "name": "Snacks" },
+    { "slug": "seasoning", "name": "Seasoning" }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "slug": "mango-pickle",
+      "name": "Mango Pickle",
+      "nameNp": "आँपको अचार",
+      "category": "pickles",
+      "price": 250,
+      "image": "mango-pickle.jpg",
+      "description": "Made from fresh raw mangoes, mustard oil, timur and a handful of spices we've been using for 20 years. Goes with everything.",
+      "badge": "Our best-seller",
+      "ingredients": [
+        { "np": "काँचो आँप", "text": "Raw mango" },
+        { "np": "तोरीको तेल", "text": "Mustard oil" },
+        { "np": "टिमुर", "text": "Timur" },
+        { "np": "मसला", "text": "Family spices" }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "chilli-pickle",
+      "name": "Chilli Pickle",
+      "nameNp": "खुर्सानीको अचार",
+      "category": "pickles",
+      "price": 220,
+      "image": "chilli-pickle.jpg",
+      "description": "For those who like it hot. Fresh green chillies, garlic, mustard seeds, and local spices ground together. Not for the faint-hearted."
+    },
+    {
+      "id": 3,
+      "slug": "mixed-vegetable-pickle",
+      "name": "Mixed Vegetable Pickle",
+      "nameNp": "मिक्स तरकारी अचार",
+      "category": "pickles",
+      "price": 240,
+      "image": "mixed-vegetable-pickle.jpg",
+      "description": "A bit of everything — seasonal vegetables pickled in mustard oil with our family spice blend. Different every batch, always good."
+    },
+    {
+      "id": 4,
+      "slug": "buckwheat-flour",
+      "name": "Buckwheat Flour",
+      "nameNp": "फापरको पिठो",
+      "category": "flour",
+      "price": 180,
+      "image": "buckwheat-flour.jpg",
+      "description": "Stone-ground from locally grown buckwheat. Perfect for dhido, roti, or anything that needs proper flour with real nutrition."
+    },
+    {
+      "id": 5,
+      "slug": "roasted-corn",
+      "name": "Roasted Corn",
+      "nameNp": "भुटेको मकै",
+      "category": "snacks",
+      "price": 120,
+      "image": "roasted-corn.jpg",
+      "description": "Crunchy roasted corn with a touch of salt and spice. The snack our grandparents grew up on — simple, honest, and addictive."
+    },
+    {
+      "id": 6,
+      "slug": "roasted-batmas",
+      "name": "Roasted Batmas",
+      "nameNp": "भुटेको भटमास",
+      "category": "snacks",
+      "price": 150,
+      "image": "roasted-batmas.jpg",
+      "description": "High-protein roasted soybeans seasoned the Nepali way. Great with tea, great with beer, great on their own."
+    },
+    {
+      "id": 7,
+      "slug": "millet-flour",
+      "name": "Millet Flour",
+      "nameNp": "कोदोको पिठो",
+      "category": "flour",
+      "price": 140,
+      "image": "millet-flour.jpg",
+      "description": "Finger millet flour, rich in calcium and iron. The base for traditional dhido — our comfort food, ground fresh."
+    },
+    {
+      "id": 8,
+      "slug": "ajina-moto",
+      "name": "Ajina Moto",
+      "nameNp": "अजिनोमोटो",
+      "category": "seasoning",
+      "price": 90,
+      "image": "ajina-moto.jpg",
+      "description": "The umami boost every Nepali kitchen needs. A pinch transforms chowmein, momo, fried rice, and practically anything savoury."
+    },
+    {
+      "id": 9,
+      "slug": "chatpat-masala",
+      "name": "Chatpat Masala",
+      "nameNp": "चटपट मसला",
+      "category": "spices",
+      "price": 100,
+      "image": "chatpat-masala.jpg",
+      "description": "Our tangy-spicy seasoning blend. Toss it on fruit, mix it into chatpate, sprinkle it on anything that needs a kick."
+    }
+  ],
+  "dealership": {
+    "title": "Sell Acharya Foods in your store",
+    "intro": "We're looking for shop owners and distributors across Nepal who want to stock authentic, family-made products their customers will love. Here's what you get:",
+    "benefits": [
+      { "title": "Fair dealer margins", "text": "we want this to work for both of us" },
+      { "title": "Reliable supply", "text": "consistent delivery across Nepal, Terai to hills" },
+      { "title": "Marketing support", "text": "we'll help you sell with materials and training" },
+      { "title": "Direct line to us", "text": "no call centres, you talk to the family" }
+    ],
+    "formTitle": "Apply for dealership",
+    "formIntro": "Tell us about your business. We'll reach out within 48 hours.",
+    "businessTypes": [
+      { "value": "retail", "label": "Retail Store" },
+      { "value": "wholesale", "label": "Wholesale Distributor" },
+      { "value": "supermarket", "label": "Supermarket" },
+      { "value": "kirana", "label": "Kirana / General Store" },
+      { "value": "other", "label": "Other" }
+    ]
+  },
+  "support": {
+    "title": "Help with something you bought",
+    "intro": "A jar that arrived damaged, a packet that does not taste right, a question about how to use something — tell us and the family will sort it out.",
+    "faqs": [
+      {
+        "question": "Do you use artificial colours or preservatives?",
+        "answer": "No. Every product we make is free of artificial colours, flavours, or preservatives."
+      },
+      {
+        "question": "How do I become a dealer?",
+        "answer": "Fill in the dealership application. We reach out within 48 hours."
+      },
+      {
+        "question": "Where are you?",
+        "answer": "Ratnanagar-3, Chitwan, Nepal."
+      }
+    ]
+  }
+}
