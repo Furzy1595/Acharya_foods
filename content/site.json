@@ -10,9 +10,10 @@
     "title": "Acharya Foods — Handcrafted Nepali Pickles, Spices & Flour | Chitwan, Nepal",
     "description": "Acharya Foods brings you handcrafted Nepali pickles, spice blends, and stone-ground flours from our family kitchen in Chitwan. Made the old way since 2006.",
     "keywords": "Nepali pickles, achar, Nepali spices, buckwheat flour, millet flour, Acharya Foods, Chitwan food, traditional Nepali food",
-    "footerBlurb": "Family-made pickles, spices, and flours from Chitwan. Doing things the old-fashioned way since 2006.",
+    "footerBlurb": "Family-made pickles, spices and flours from Chitwan, Nepal. Made the old way since 2006.",
     "footerNote": "A family tradition since 2006",
-    "placeNp": "चितवन, नेपाल"
+    "placeNp": "चितवन, नेपाल",
+    "taglineNp": "घरको स्वाद, २००६ देखि"
   },
   "api": {
     "baseUrl": ""
@@ -28,7 +29,7 @@
     "whatsapp": "",
     "email": "acharyafoodsudhog@gmail.com",
     "title": "We'd love to hear from you",
-    "intro": "Whether you want to stock our products, have a question, or just want to say namaste — drop us a line."
+    "intro": "Want to stock our products, have a question, or just want to say namaste? Call, write, or visit us in Ratnanagar."
   },
   "social": {
     "facebook": "",
@@ -44,23 +45,33 @@
   },
   "home": {
     "hero": {
-      "titleNp": "अचार, मसला र पिठो — पुरानै तरिकाले।",
+      "eyebrowNp": "चितवनको भान्साबाट, २००६ देखि",
+      "bigNp": "अचार",
+      "restNp": "मसला र पिठो",
       "title": "Pickles, spices & flours — made the old way.",
-      "subtitle": "From our family kitchen in Chitwan to your table",
-      "body": "We've been grinding spices by hand and jarring pickles the way our grandmother taught us. No shortcuts, no factories — just good food made with patience.",
+      "body": "We grind spices by hand and jar pickles the way our grandmother taught us. No shortcuts, no factories — just good food made with patience.",
       "image": "pickle-banner.jpg",
-      "imageAlt": "Acharya's Classic Pickles — Mixed, Green Chilli, and Mango varieties arranged with fresh ingredients on a wooden table"
+      "imageAlt": "Acharya's Classic Pickles — Mixed, Green Chilli, and Mango varieties arranged with fresh ingredients on a wooden table",
+      "photoCaptionNp": "घरको स्वाद, हरेक बट्टामा",
+      "stampNp": [
+        "हातले",
+        "बनाएको"
+      ],
+      "stampText": "HANDMADE IN CHITWAN"
     },
     "story": {
+      "lead": "Mrs. Laxmi Acharya starts making pickles in her kitchen in Chitwan, the way her grandmother did.",
       "title": "Three generations. One kitchen. Same recipes.",
       "paragraphs": [
-        "It started in 2006 — Mrs. Laxmi Acharya in her kitchen in Chitwan, making pickles the way her grandmother did. Neighbours kept asking for more. Friends wanted jars for their families. Before long, what was a home recipe became something bigger.",
-        "Twenty years later, not much has changed. We still pick the ingredients ourselves. We still follow the same recipes. The kitchen is bigger, sure, but the hands and the heart behind every jar? Still the same family.",
-        "Every product we make is free of artificial colours, flavours, or preservatives. We don't believe in shortcuts — if it takes three days to get the pickle right, we take three days."
+        "Neighbours kept asking for more. Friends wanted jars for their families. Before long, what was a home recipe became something bigger.",
+        "Twenty years later, not much has changed. We still pick the ingredients ourselves and follow the same recipes. The kitchen is bigger, but the hands and the heart behind every jar are still the same family.",
+        "Every product is free of artificial colours, flavours and preservatives."
       ],
-      "note": "Making food the honest way since 2006",
-      "image": "product-range.png",
-      "imageAlt": "Acharya Foods product range including fried foods, buckwheat flour, chatpate masala, and millet flour"
+      "steps": [
+        { "np": "आफैं छान्छौं", "text": "We pick the ingredients ourselves" },
+        { "np": "हातले पिस्छौं", "text": "Spices ground by hand" },
+        { "np": "धैर्यले पकाउँछौं", "text": "If it takes three days, we take three days" }
+      ]
     }
   },
   "categories": [
@@ -79,7 +90,14 @@
       "category": "pickles",
       "price": 250,
       "image": "mango-pickle.jpg",
-      "description": "Our best-seller. Made from fresh raw mangoes, mustard oil, timur, and a handful of spices we've been using for 20 years. Goes with everything."
+      "description": "Made from fresh raw mangoes, mustard oil, timur and a handful of spices we've been using for 20 years. Goes with everything.",
+      "badge": "Our best-seller",
+      "ingredients": [
+        { "np": "काँचो आँप", "text": "Raw mango" },
+        { "np": "तोरीको तेल", "text": "Mustard oil" },
+        { "np": "टिमुर", "text": "Timur" },
+        { "np": "मसला", "text": "Family spices" }
+      ]
     },
     {
       "id": 2,

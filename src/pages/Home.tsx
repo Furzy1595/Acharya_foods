@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { categories, content, digits, products } from '../content';
+import { categories, content, digits, npDigits, products } from '../content';
 import { Heading } from '../components/Heading';
-import { CheckIcon } from '../components/Icons';
 import { Picture } from '../components/Picture';
 import { ProductGrid } from '../components/ProductCard';
 
 export function Home() {
   const { hero, story } = content.home;
-  const { dealership, contact, nepali } = content;
+  const { dealership, contact, nepali, site } = content;
   const [category, setCategory] = useState('all');
   const shown = category === 'all' ? products : products.filter((p) => p.category === category);
 
@@ -17,25 +16,40 @@ export function Home() {
       <section className="hero">
         <div className="container hero__inner">
           <div className="hero__text">
-            {hero.titleNp && (
-              <p className="hero__np" lang="ne">
-                {hero.titleNp}
+            {hero.eyebrowNp && (
+              <p className="hero__eyebrow" lang="ne">
+                {hero.eyebrowNp}
               </p>
             )}
-            <h1>{hero.title}</h1>
-            <p className="lead">{hero.subtitle}</p>
-            <p>{hero.body}</p>
+            <h1 className="hero__title">
+              <span className="hero__big" lang="ne">
+                {hero.bigNp}
+              </span>
+              {hero.restNp && (
+                <span className="hero__rest" lang="ne">
+                  {hero.restNp}
+                </span>
+              )}
+              <span className="hero__en">{hero.title}</span>
+            </h1>
+            <p className="hero__body">{hero.body}</p>
             <div className="button-row">
               <Link to="/products/" className="btn btn-primary">
                 See our products
               </Link>
-              <Link to="/dealership/" className="btn btn-quiet">
+              <Link to="/dealership/" className="btn btn-outline">
                 Become a dealer
               </Link>
             </div>
           </div>
           <div className="hero__photo">
-            <Picture file={hero.image} alt={hero.imageAlt} sizes="(min-width: 900px) 600px, 100vw" eager />
+            <figure className="print">
+              <Picture file={hero.image} alt={hero.imageAlt} sizes="(min-width: 900px) 580px, 100vw" eager />
+              {hero.photoCaptionNp && (
+                <figcaption lang="ne">{hero.photoCaptionNp}</figcaption>
+              )}
+            </figure>
+            {hero.stampNp && <Stamp lines={hero.stampNp} ring={hero.stampText ?? ''} />}
           </div>
         </div>
       </section>
@@ -59,53 +73,89 @@ export function Home() {
         </div>
       </section>
 
-      <section className="section section--rule story" id="story">
+      <section className="section story" id="story">
         <div className="container story__inner">
-          <div className="story__photo">
-            <Picture file={story.image} alt={story.imageAlt} sizes="(min-width: 900px) 400px, 90vw" />
+          <div>
+            <p className="story__year" lang="ne">
+              {npDigits(site.established)}
+            </p>
+            <p className="story__lead">{story.lead}</p>
           </div>
-          <div className="story__text">
+          <div>
             <Heading np={nepali?.story}>{story.title}</Heading>
             {story.paragraphs.map((p) => (
               <p key={p}>{p}</p>
             ))}
-            <p className="story__note">{story.note}</p>
           </div>
         </div>
+        {story.steps.length > 0 && (
+          <div className="container">
+            <ol className="steps">
+              {story.steps.map((step, i) => (
+                <li key={step.text}>
+                  <span className="steps__n" lang="ne">
+                    {npDigits(i + 1)}
+                  </span>
+                  <span className="steps__np" lang="ne">
+                    {step.np}
+                  </span>
+                  <span className="steps__en">{step.text}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
       </section>
 
       <section className="section dealer-band" id="dealership">
         <div className="container dealer-band__inner">
           <div>
             <Heading np={nepali?.dealership}>{dealership.title}</Heading>
-            <p>{dealership.intro}</p>
-            <Benefits />
-          </div>
-          <div className="dealer-band__cta">
-            <p className="lead">Fill out a quick application and we’ll get back to you within 48 hours.</p>
-            <Link to="/dealership/" className="btn btn-primary">
+            <p>{dealership.intro.replace(/ Here.s what you get:?$/, '')}</p>
+            <Link to="/dealership/" className="btn btn-bright">
               Apply for dealership
             </Link>
+            <p className="dealer-band__note">We get back to you within 48 hours.</p>
           </div>
+          <ul className="benefit-cards">
+            {dealership.benefits.map((b) => (
+              <li key={b.title}>
+                <strong>{b.title}</strong>
+                <span>{b.text.charAt(0).toUpperCase() + b.text.slice(1)}.</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       <section className="section" id="contact">
         <div className="container contact-strip">
           <div>
-            <Heading np={nepali?.contact}>{contact.title}</Heading>
+            <p className="contact-strip__namaste" lang="ne">
+              {nepali?.contact ?? 'नमस्ते'}
+            </p>
+            <h2>{contact.title}</h2>
             <p>{contact.intro}</p>
           </div>
-          <div className="contact-strip__actions">
-            <a href={`tel:${digits(contact.phone)}`} className="btn btn-primary">
-              Call {contact.phone}
+          <div className="contact-tiles">
+            <a href={`tel:${digits(contact.phone)}`} className="tile tile--call">
+              <span className="tile__label">Call us</span>
+              <span className="tile__value">{contact.phone}</span>
             </a>
-            <Link to="/contact/" className="btn btn-outline">
-              Send a message
+            <Link to="/contact/" className="tile tile--line">
+              <span className="tile__label">Send a message</span>
+              <span className="tile__value tile__value--small">{contact.email}</span>
             </Link>
-            <Link to="/support/" className="btn btn-quiet">
-              Get help with a product
-            </Link>
+            <div className="contact-tiles__pair">
+              <Link to="/support/" className="tile tile--soft">
+                <span className="tile__strong">Help with a product</span>
+                <span className="tile__label">A damaged jar, a question</span>
+              </Link>
+              <div className="tile tile--grey">
+                <span className="tile__strong">Visit us</span>
+                <span className="tile__label">{contact.addressLine.replace(/, Nepal$/, '')}</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -113,15 +163,33 @@ export function Home() {
   );
 }
 
+function Stamp({ lines, ring }: { lines: string[]; ring: string }) {
+  return (
+    <svg className="stamp" viewBox="0 0 200 200" aria-hidden="true">
+      <defs>
+        <path id="stamp-ring" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0" />
+      </defs>
+      <circle cx="100" cy="100" r="96" fill="#0E7A0C" />
+      <circle cx="100" cy="100" r="86" fill="none" stroke="#FFFFFF" strokeWidth="2" strokeDasharray="4 5" />
+      <text fontFamily="Mukta, sans-serif" fontWeight="700" fontSize="17" letterSpacing="3" fill="#FFFFFF">
+        <textPath href="#stamp-ring">{`${ring} • ${ring} •`}</textPath>
+      </text>
+      {lines.map((line, i) => (
+        <text key={line} x="100" y={lines.length === 1 ? 112 : 94 + i * 34} textAnchor="middle" fontFamily="Kalam, cursive" fontWeight="700" fontSize={i === 0 ? 34 : 30} fill="#FFFFFF">
+          {line}
+        </text>
+      ))}
+    </svg>
+  );
+}
+
 export function Benefits() {
   return (
-    <ul className="benefits">
+    <ul className="benefit-cards benefit-cards--light">
       {content.dealership.benefits.map((b) => (
         <li key={b.title}>
-          <CheckIcon />
-          <span>
-            <strong>{b.title}</strong> — {b.text}
-          </span>
+          <strong>{b.title}</strong>
+          <span>{b.text.charAt(0).toUpperCase() + b.text.slice(1)}.</span>
         </li>
       ))}
     </ul>

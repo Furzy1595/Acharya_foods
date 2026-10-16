@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
+import logo from '../assets/logo.png';
+import scene from '../assets/nepal-footer.svg';
 import { content, digits } from '../content';
 import { seoFor } from '../seo';
 import { CloseIcon, MenuIcon, PhoneIcon } from './Icons';
@@ -46,16 +48,10 @@ export function Layout() {
       <a className="skip-link" href="#main">
         Skip to the page
       </a>
-      <div className="dhaka dhaka--top" aria-hidden="true" />
       <header className="site-header">
         <div className="container site-header__inner">
           <Link to="/" className="brand">
-            <span className="brand__name">{site.name}</span>
-            {site.placeNp && (
-              <span className="brand__place" lang="ne">
-                {site.placeNp}
-              </span>
-            )}
+            <img src={logo} alt={`${site.name}, home`} width={900} height={591} />
           </Link>
           <nav id="site-nav" className={`site-nav${menuOpen ? ' is-open' : ''}`} aria-label="Main">
             <ul>
@@ -97,13 +93,18 @@ export function Layout() {
       </main>
 
       <footer className="site-footer">
-        <div className="dhaka dhaka--footer" aria-hidden="true" />
         <div className="container site-footer__grid">
           <div>
-            <p className="site-footer__name">{site.name}</p>
+            <img className="site-footer__logo" src={logo} alt={site.name} width={900} height={591} loading="lazy" />
             <p>{site.footerBlurb}</p>
+            {site.taglineNp && (
+              <p className="site-footer__np" lang="ne">
+                {site.taglineNp}
+              </p>
+            )}
           </div>
           <nav aria-label="Footer">
+            <h2 className="site-footer__heading">Explore</h2>
             <ul className="site-footer__links">
               <li>
                 <Link to="/">Home</Link>
@@ -115,28 +116,36 @@ export function Layout() {
               ))}
             </ul>
           </nav>
-          <ul className="site-footer__contact">
-            <li>{contact.addressLine}</li>
-            <li>
-              <a href={tel}>{contact.phone}</a>
-            </li>
-            <li>
+          <div>
+            <h2 className="site-footer__heading">Get in touch</h2>
+            <p>
+              Give us a call or WhatsApp us at <a href={tel}>{contact.phone}</a>
+            </p>
+            <p>
               <a href={`mailto:${contact.email}`}>{contact.email}</a>
-            </li>
-            {socials.map((s) => (
-              <li key={s.label}>
-                <a href={s.url} rel="noopener">
-                  {s.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+            </p>
+            <p>{contact.addressLine}</p>
+            {socials.length > 0 && (
+              <ul className="site-footer__social">
+                {socials.map((s) => (
+                  <li key={s.label}>
+                    <a href={s.url} rel="noopener">
+                      {s.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
-        <div className="container site-footer__bottom">
-          <span>
-            © {__BUILD_YEAR__} {site.name}. All rights reserved.
-          </span>
-          <span>{site.footerNote}</span>
+        <img className="site-footer__scene" src={scene} alt="" aria-hidden="true" loading="lazy" />
+        <div className="site-footer__bottom">
+          <div className="container site-footer__bottom-inner">
+            <span>
+              © {__BUILD_YEAR__} {site.name}. All rights reserved.
+            </span>
+            <span>Made with care in Chitwan, Nepal</span>
+          </div>
         </div>
       </footer>
     </>

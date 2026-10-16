@@ -1,30 +1,41 @@
 import { Link } from 'react-router-dom';
-import { formatPrice, type Product } from '../content';
+import { npDigits, type Product } from '../content';
 import { Picture } from './Picture';
 
+/** The round price seal on a product photo: रु and the price in Nepali numerals. */
+export function PriceSeal({ price, large = false }: { price?: number | null; large?: boolean }) {
+  if (price === null || price === undefined) return null;
+  return (
+    <span className={`seal${large ? ' seal--large' : ''}`}>
+      <span className="seal__rs" lang="ne">
+        रु
+      </span>
+      <span className="seal__np" lang="ne">
+        {npDigits(price)}
+      </span>
+      {large && <span className="seal__en">Rs {price}</span>}
+    </span>
+  );
+}
+
 export function ProductCard({ product }: { product: Product }) {
-  const price = formatPrice(product.price);
+  const hasPrice = product.price !== null && product.price !== undefined;
   return (
     <li className="product-card">
       <Link to={`/products/${product.slug}/`} className="product-card__link">
         <div className="product-card__photo">
-          <Picture
-            file={product.image}
-            alt={`${product.name} — Acharya Foods`}
-            sizes="(min-width: 900px) 360px, 50vw"
-          />
+          <Picture file={product.image} alt={`${product.name} — Acharya Foods`} sizes="(min-width: 900px) 360px, 50vw" />
+          <PriceSeal price={product.price} />
         </div>
-        <div className="product-card__body">
-          {product.nameNp && (
-            <p className="product-card__np" lang="ne">
-              {product.nameNp}
-            </p>
-          )}
-          <div className="product-card__row">
-            <h3 className="product-card__name">{product.name}</h3>
-            {price && <p className="product-card__price">{price}</p>}
-          </div>
-        </div>
+        {product.nameNp && (
+          <p className="product-card__np" lang="ne">
+            {product.nameNp}
+          </p>
+        )}
+        <p className="product-card__row">
+          <span className="product-card__name">{product.name}</span>
+          {hasPrice && <span className="product-card__price">Rs {product.price}</span>}
+        </p>
       </Link>
     </li>
   );

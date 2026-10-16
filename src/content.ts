@@ -14,6 +14,10 @@ export interface Product {
   price?: number | null;
   /** For example "400 g jar". */
   pack?: string;
+  /** A short line above the name on the product's page, e.g. "Our best-seller". */
+  badge?: string;
+  /** What goes into it, shown as small labels on the product's page. */
+  ingredients?: { np: string; text: string }[];
   image?: string;
   description: string;
 }
@@ -33,6 +37,8 @@ export interface SiteContent {
     place: string;
     /** The place in Nepali, shown under the name. Optional. */
     placeNp?: string;
+    /** A short Nepali line under the name in the footer. */
+    taglineNp?: string;
     title: string;
     description: string;
     keywords: string;
@@ -55,8 +61,21 @@ export interface SiteContent {
   /** Short Nepali lines shown beside the English headings. Leave one out and only English shows. */
   nepali?: { products?: string; story?: string; dealership?: string; support?: string; contact?: string };
   home: {
-    hero: { titleNp?: string; title: string; subtitle: string; body: string; image: string; imageAlt: string };
-    story: { title: string; paragraphs: string[]; note: string; image: string; imageAlt: string };
+    hero: {
+      eyebrowNp?: string;
+      /** The giant Nepali word, and the Nepali line under it. */
+      bigNp: string;
+      restNp?: string;
+      title: string;
+      body: string;
+      image: string;
+      imageAlt: string;
+      photoCaptionNp?: string;
+      /** The round stamp beside the photo: two Nepali lines and the text around the edge. */
+      stampNp?: string[];
+      stampText?: string;
+    };
+    story: { lead: string; title: string; paragraphs: string[]; steps: { np: string; text: string }[] };
   };
   categories: Category[];
   products: Product[];
@@ -108,6 +127,11 @@ export function categoryName(slug: string): string {
 
 export function findProduct(slug: string | undefined): Product | undefined {
   return products.find((p) => p.slug === slug);
+}
+
+/** 2006 -> २००६ */
+export function npDigits(value: number | string): string {
+  return String(value).replace(/[0-9]/g, (d) => '०१२३४५६७८९'[Number(d)]);
 }
 
 export function formatPrice(price: number | null | undefined): string | null {
