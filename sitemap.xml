@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://acharyafoods.com.np/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/products/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/products/category/pickles/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/products/category/spices/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/products/category/flour/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/products/category/snacks/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/products/category/seasoning/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/products/mango-pickle/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/products/chilli-pickle/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/products/mixed-vegetable-pickle/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/products/buckwheat-flour/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/products/roasted-corn/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/products/roasted-batmas/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/products/millet-flour/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/products/ajina-moto/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/products/chatpat-masala/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/dealership/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/support/</loc><lastmod>2026-10-09</lastmod></url>
-  <url><loc>https://acharyafoods.com.np/contact/</loc><lastmod>2026-10-09</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url><loc>https://acharyafoods.com.np/</loc><lastmod>2026-10-16</lastmod><priority>1.0</priority><image:image><image:loc>https://acharyafoods.com.np/media/pickle-banner-1600.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/mango-pickle-960.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/chilli-pickle-960.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/mixed-vegetable-pickle-480.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/buckwheat-flour-1600.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/roasted-corn-1600.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/roasted-batmas-1600.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/millet-flour-1600.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/ajina-moto-1600.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/chatpat-masala-1600.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/products/</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority><image:image><image:loc>https://acharyafoods.com.np/media/mango-pickle-960.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/chilli-pickle-960.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/mixed-vegetable-pickle-480.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/buckwheat-flour-1600.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/roasted-corn-1600.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/roasted-batmas-1600.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/millet-flour-1600.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/ajina-moto-1600.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/chatpat-masala-1600.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/products/category/pickles/</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority><image:image><image:loc>https://acharyafoods.com.np/media/mango-pickle-960.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/chilli-pickle-960.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/mixed-vegetable-pickle-480.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/products/category/spices/</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority><image:image><image:loc>https://acharyafoods.com.np/media/chatpat-masala-1600.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/products/category/flour/</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority><image:image><image:loc>https://acharyafoods.com.np/media/buckwheat-flour-1600.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/millet-flour-1600.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/products/category/snacks/</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority><image:image><image:loc>https://acharyafoods.com.np/media/roasted-corn-1600.webp</image:loc></image:image><image:image><image:loc>https://acharyafoods.com.np/media/roasted-batmas-1600.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/products/category/seasoning/</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority><image:image><image:loc>https://acharyafoods.com.np/media/ajina-moto-1600.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/products/mango-pickle/</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority><image:image><image:loc>https://acharyafoods.com.np/media/mango-pickle-960.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/products/chilli-pickle/</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority><image:image><image:loc>https://acharyafoods.com.np/media/chilli-pickle-960.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/products/mixed-vegetable-pickle/</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority><image:image><image:loc>https://acharyafoods.com.np/media/mixed-vegetable-pickle-480.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/products/buckwheat-flour/</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority><image:image><image:loc>https://acharyafoods.com.np/media/buckwheat-flour-1600.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/products/roasted-corn/</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority><image:image><image:loc>https://acharyafoods.com.np/media/roasted-corn-1600.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/products/roasted-batmas/</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority><image:image><image:loc>https://acharyafoods.com.np/media/roasted-batmas-1600.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/products/millet-flour/</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority><image:image><image:loc>https://acharyafoods.com.np/media/millet-flour-1600.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/products/ajina-moto/</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority><image:image><image:loc>https://acharyafoods.com.np/media/ajina-moto-1600.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/products/chatpat-masala/</loc><lastmod>2026-10-16</lastmod><priority>0.8</priority><image:image><image:loc>https://acharyafoods.com.np/media/chatpat-masala-1600.webp</image:loc></image:image></url>
+  <url><loc>https://acharyafoods.com.np/dealership/</loc><lastmod>2026-10-16</lastmod><priority>0.6</priority></url>
+  <url><loc>https://acharyafoods.com.np/support/</loc><lastmod>2026-10-16</lastmod><priority>0.6</priority></url>
+  <url><loc>https://acharyafoods.com.np/contact/</loc><lastmod>2026-10-16</lastmod><priority>0.6</priority></url>
 </urlset>
