@@ -4,6 +4,14 @@
 @import '@fontsource/mukta/600.css';
 @import '@fontsource/mukta/700.css';
 
+/* Kalimati: the Unicode Nepali font in the familiar Preeti style, for every Nepali word. */
+@font-face {
+  font-family: 'Kalimati';
+  src: url('./assets/kalimati.woff2') format('woff2');
+  font-display: swap;
+  unicode-range: U+0900-097F, U+1CD0-1CFF, U+200C-200D, U+20A8, U+25CC, U+A830-A83F, U+A8E0-A8FF;
+}
+
 /* The look in four ideas:
    - white paper and plenty of room; nothing that is not needed
    - simrik, Nepal's crimson (also the red of the Acharya's label), for the things you can press
@@ -99,7 +107,14 @@ ul {
   list-style: none;
 }
 
-[lang='ne'] {
+[lang='ne'],
+.heading__np,
+.hero__np,
+.product__np,
+.product-card__np,
+.brand__place {
+  font-family: 'Kalimati', 'Mukta', sans-serif;
+  font-weight: 400;
   line-height: 1.5; /* room for the marks above and below the line */
 }
 
@@ -950,4 +965,15 @@ ul {
   display: block;
   font-size: var(--step--1);
   color: var(--ink-soft);
+}
+
+/* Kept last so no heading style above replaces the Nepali font (Kalimati has one weight). */
+[lang='ne'],
+.heading__np,
+.hero__np,
+.product__np,
+.product-card__np,
+.brand__place {
+  font-family: 'Kalimati', 'Mukta', sans-serif;
+  font-weight: 400;
 }
