@@ -5,9 +5,9 @@ Two things connect them. Both are small on purpose.
 ```
  Business system (office)                       Website (GitHub Pages)
  ------------------------                       ----------------------
- Website -> Content, Products   -- Publish -->  content/site.json + content/media/
-                                                (a commit to this repository; the
-                                                 site rebuilds itself in about 2 minutes)
+ Website -> Content, Products   -- Publish -->  site/content/site.json + site/content/media/
+                                                (a commit to main; the site
+                                                 rebuilds itself in about 2 minutes)
 
  Website -> Inquiries           <-- message --  forms on /contact/, /dealership/, /support/
                                                 POST {api.baseUrl}/api/public/inquiries
@@ -16,7 +16,7 @@ Two things connect them. Both are small on purpose.
 The website never reads from the business system while a visitor is looking at it. That is why
 it stays online, with the content published last, when the office computer is off.
 
-## 1. Publishing content: `content/site.json`
+## 1. Publishing content: `site/content/site.json`
 
 The business system writes the whole file each time. `schemaVersion` is `1`.
 
@@ -30,11 +30,11 @@ The business system writes the whole file each time. `schemaVersion` is `1`.
 | `nepali` | The short Nepali lines shown beside the English headings: `products`, `story`, `dealership`, `support`, `contact`. Leave one out and only English shows |
 | `home.hero`, `home.story` | Wording and photo of the top of the home page and of "Our story". `home.hero.titleNp` is the large Nepali line at the top of the home page |
 | `categories[]` | `slug`, `name`, in the order they are shown. A category without products is not shown |
-| `products[]` | In the order they are shown: `id`, `slug` (the product's address, never change it once published), `name`, `nameNp`, `category`, `price` (rupees; leave out or `null` to show no price), `pack` (for example "400 g jar"; optional), `image` (a file name in `content/media/`), `description` |
+| `products[]` | In the order they are shown: `id`, `slug` (the product's address, never change it once published), `name`, `nameNp`, `category`, `price` (rupees; leave out or `null` to show no price), `pack` (for example "400 g jar"; optional), `image` (a file name in `site/content/media/`), `description` |
 | `dealership` | Wording, the list of benefits, the kinds of business offered in the form |
 | `support` | Wording and the questions and answers. An empty list hides "Asked often" |
 
-Photos go into `content/media/` as JPEG, PNG or WebP, any size; the build shrinks them. A photo
+Photos go into `site/content/media/` as JPEG, PNG or WebP, any size; the build shrinks them. A photo
 that is no longer named in `site.json` should be removed from the folder.
 
 ## 2. Receiving messages: `POST /api/public/inquiries`

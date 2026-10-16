@@ -1,24 +1,28 @@
-# Builds the website and puts it on acharyafoods.com.np (GitHub Pages).
-# Runs when anything on "main" changes - including when the business system
-# publishes new content (it changes content/site.json and content/media).
+# Builds the website and publishes it on acharyafoods.com.np.
+#
+# GitHub Pages serves the top folder of the "main" branch ("Deploy from a branch").
+# The source lives in site/; this workflow builds it and places the finished pages at the
+# top of main, then asks GitHub Pages to publish. It runs whenever anything in site/
+# changes - including when the business system publishes new content
+# (site/content/site.json and site/content/media/).
 name: Publish website
 
 on:
   push:
     branches: [main]
+    paths: ['site/**', '.github/workflows/deploy.yml']
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: publish-website
   cancel-in-progress: false
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,18 +30,26 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
-      - run: npm run build
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          cache-dependency-path: site/package-lock.json
+      - name: Build
+        working-directory: site
+        run: |
+          npm ci
+          npm run build
+      - name: Put the finished pages at the top of main
+        run: node site/scripts/place-build.mjs
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "The published pages are already up to date."
+          else
+            git commit -m "Publish website build"
+            git push
+          fi
+      - name: Ask GitHub Pages to publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages will publish from the push."

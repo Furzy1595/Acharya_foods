@@ -12,18 +12,18 @@ Not from the code. Everything the site says and shows is in two places:
 
 | What | Where |
 |------|-------|
-| Wording, products, prices, contact details, questions and answers | `content/site.json` |
-| Photos | `content/media/` |
+| Wording, products, prices, contact details, questions and answers | `site/content/site.json` |
+| Photos | `site/content/media/` |
 
 The Acharya Foods business system writes these when somebody presses **Publish to website**
-there. Do not edit wording in `src/`. The format is described in
+there. Do not edit wording in `site/src/`. The format is described in
 [`docs/CONNECTING.md`](docs/CONNECTING.md).
 
 ## Messages from visitors
 
 The contact form, the dealership application and the support form send what the visitor wrote:
 
-1. to the business system, once it is linked (`api.baseUrl` in `content/site.json`);
+1. to the business system, once it is linked (`api.baseUrl` in `site/content/site.json`);
 2. until then, by email to `forms.sendTo` (acharyafoodsudhog@gmail.com) through
    [FormSubmit](https://formsubmit.co), a free form-to-email service. The applicant also gets a
    short confirmation email when they gave an address, and pressing Reply in Gmail answers them.
@@ -35,7 +35,10 @@ WhatsApp or phone with their words already filled in - nothing is dropped silent
 
 ## Working on it
 
+Everything below runs in the `site/` folder.
+
 ```
+cd site
 npm install
 npm run dev        # the site on http://localhost:5173, reloads as you edit
 npm run build      # the finished site in dist/
@@ -47,17 +50,19 @@ To try the forms against a business system on your own computer:
 
 ## Publishing
 
-Anything that reaches the `main` branch is built and published by
-`.github/workflows/deploy.yml`. In the repository settings, **Pages -> Source** must be
-**GitHub Actions**.
+GitHub Pages is set to **Deploy from a branch: main, / (root)**, and serves the finished pages
+at the top of this repository (`index.html`, `assets/`, `products/` and so on - listed in
+`.published-files`). Do not edit those by hand: whenever anything in `site/` changes on `main`,
+`.github/workflows/deploy.yml` builds the site, replaces them, and asks Pages to publish.
+Keep the Pages setting as it is; switching it to "GitHub Actions" is not needed.
 
 | Folder | What is in it |
 |--------|---------------|
-| `content/` | What the site says and shows (written by the business system) |
-| `src/pages/` | One file per kind of page |
-| `src/components/` | Header and footer, product card, forms, pictures |
-| `src/lib/api.ts` | Sending a message to the business system |
-| `src/seo.ts` | Page titles, descriptions and link previews |
-| `scripts/images.mjs` | Shrinks the photos for phones |
-| `scripts/prerender.mjs` | Writes one HTML file per page, the 404 page and the sitemap |
-| `tests/` | The browser checks |
+| `site/content/` | What the site says and shows (written by the business system) |
+| `site/src/pages/` | One file per kind of page |
+| `site/src/components/` | Header and footer, product card, forms, pictures |
+| `site/src/lib/api.ts` | Sending a message to the business system |
+| `site/src/seo.ts` | Page titles, descriptions and link previews |
+| `site/scripts/images.mjs` | Shrinks the photos for phones |
+| `site/scripts/prerender.mjs` | Writes one HTML file per page, the 404 page and the sitemap |
+| `site/tests/` | The browser checks |

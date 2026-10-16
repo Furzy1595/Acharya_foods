@@ -1,7 +1,7 @@
 node_modules
-dist
-dist-ssr
-public/media
-src/generated
+site/dist
+site/dist-ssr
+site/public/media
+site/src/generated
 *.log
-tests/output
+site/tests/output
